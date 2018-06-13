@@ -1,0 +1,1025 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- log -->
+    <link rel="icon" href="ws_screen_fin/statics/src/img/ws_logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/ws_screen_fin/static/src/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/ws_screen_fin/static/src/js/highcharts.js"></script>
+    <script type="text/javascript" src="/ws_screen_fin/static/src/js/map.js"></script>
+    <script type="text/javascript" src="/ws_screen_fin/static/src/js/highcharts-3d.js"></script>
+    <script type="text/javascript" src="/ws_screen_fin/static/src/js/exporting.js"></script>
+    <script type="text/javascript" src="/ws_screen_fin/static/src/js/oldie.js"></script>
+    <script type="text/javascript" src="/ws_screen_fin/static/src/js/highcharts-zh_CN.js"></script>
+    <style type="text/css">
+        table,table tr, table tr th, table tr td
+        {
+            border:2px solid #0094ff;
+            padding: 5px 13px;
+        }
+        table {line-height: 10px; text-align: center; border-collapse: collapse;}
+
+        .transparent{
+          filter:alpha(opacity=100);
+          -moz-opacity:0.7;
+          -khtml-opacity: 0.5;
+          opacity: 0.5;
+        }
+
+        .linear{
+
+                width:100%;
+
+                height:100%;
+
+                /*background: -ms-linear-gradient(top, #fff, #e4fff8);        /* IE 10 */
+
+                /*background:-moz-linear-gradient(top,#b8c4cb,#f6f6f8);!*火狐*!*/
+
+                background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#6bcdf8));/*谷歌*/
+
+                /*background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#43dcff));      !* Safari 4-5, Chrome 1-9*!*/
+
+                /*background: -webkit-linear-gradient(top, #fff, #0accff);   !*Safari5.1 Chrome 10+*!*/
+
+                /*background: -o-linear-gradient(top, #fff, #cafff1);  !*Opera 11.10+*!*/
+                }
+
+
+    </style>
+</head>
+<body class="linear">
+<!--
+*************************************************************************
+date:2017-11-10
+author:tangdayi
+*************************************************************************
+ -->
+<div>
+    <div style="min-width:23%;height:35%;position:absolute;left:38.5%;top:3%;">
+        <h1 style="color: white">财务共享数据中心</h1>
+    </div>
+
+
+
+
+    <div id="one" style="min-width:25%;height:35%;position:absolute;left:4%;top:15%;"></div>
+
+    <div id="tow" style="min-width:25%;height:35%;position:absolute;left:70.9%;top:15%;"></div>
+
+    <!-- 地图图  图片-->
+    <!--<div id="wens_china_map" style="width: 49%;height:46%;position:absolute;left:34%;top:27%; " >-->
+        <!--<img style="width: 65%;height:100%;" src="/ws_screen_fin/static/src/img/china_map.png">-->
+    <!--</div>-->
+    <!--动态地图-->
+    <div id="five_map" style="min-width: 31.5%;height:46%;position:absolute;left:34%;top:27%; " >
+    </div>
+
+    <div id="three" style="min-width:25%;height:35%;position:absolute;left:4%;top:55.58%;"></div>
+
+    <div id="four" style="min-width:25%;height:35%;position:absolute;left:70.9%;top:55.58%;"></div>
+
+    <div style="min-width:31.5%;height:20%;position:absolute;left:34%;right:34%;top:75%;">
+        <div style="align: center;">
+            <table border="2" cellspacing="1" cellpadding="0" style="table-layout:fixed;border:1px solid #0094ff; text-align: center; border-collapse: collapse;">
+            <tr>
+                <td>渠道</td>
+                <td>上线客户(户)</td>
+                <td>签约客户(户)</td>
+                <td>收入比例(%)</td>
+            </tr>
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td>银结通</td>
+                <td>22</td>
+                <td>55</td>
+                <td>56.1</td>
+            </tr>
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td>农业银行</td>
+                <td>44</td>
+                <td>425</td>
+                <td>23.5</td>
+            </tr>
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td>银联</td>
+                <td>34</td>
+                <td>23</td>
+                <td>64.4</td>
+            </tr>
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td>合计</td>
+                <td>100</td>
+                <td>503</td>
+                <td>60.6</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="/ws_screen_fin/static/src/js/china.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.2.2/proj4.js"></script>
+<script>
+
+    /*********************************************************************************************************************************
+     *
+     * Ajax 请求数据接口，并通过 Highcharts 提供的函数进行动态更新
+     * 接口调用完毕后间隔 1 s 继续调用本函数，以达到实时请求数据，实时更新的效果
+     *
+     *********************************************************************************************************************************/
+
+    function requestData(data_type) {
+        var mata = [];
+        $.ajax({
+        type: 'post',
+        async:false,    // 表示同步
+        //async: true,      //表示请求异步
+        url: '/ws/eas/fin/screen/inits?type='+data_type,   // 获取数据列表链接
+        success: function(data) {
+            data = JSON.parse(data);
+            mata = data['data']
+            // 5秒后继续调用本函数
+            // setTimeout(requestData, 5000);
+        },
+        cache: false
+      });
+        return mata;
+    }
+
+    /**
+     * 获取动态数据值 代扣金额
+     */
+    function requestAmtDataValue(dynamic_amt) {
+        var value = -1;
+        $.ajax({
+            type: 'post',
+            async:false,
+          //  async: true,
+            url: '/ws/eas/fin/screen/inits?type='+dynamic_amt,   // 获取数据列表链接
+            success: function(data) {
+                data = JSON.parse(data);
+                var result = data['data']
+                value = result[dynamic_amt]
+            },
+            cache: false
+        });
+        if(value<0){
+            value = Math.random()*10 + Math.random()*1000
+        }
+        return value;
+
+    }
+
+    /***
+     *
+     * 动态获取数量 代扣笔数
+     *
+     **/
+    function requestQtyDataValue(dynamic_qty) {
+        var value = -1;
+        $.ajax({
+            type: 'post',
+            async:false,
+            url: '/ws/eas/fin/screen/inits?type='+dynamic_qty,   // 获取数据列表链接
+            success: function(data) {
+                data = JSON.parse(data);
+                var result = data['data'];
+                value = result[dynamic_qty];
+                // 5秒后继续调用本函数
+                //setTimeout(requestQtyDataValue, 5000);
+            },
+            cache: false
+        });
+        if(value<0){
+            // 随机值
+            value = Math.ceil(Math.random()*10)+Math.ceil(Math.random()*100)
+        }
+        return value;
+    }
+
+    /****
+     * 获取节点审批数据
+     */
+    function requestApproveData(data_type) {
+        return requestData(data_type);
+    }
+
+    /**
+     *获取代扣数据
+     * @returns {*}
+     */
+    function requestWithholdData(data_type) {
+        return requestData(data_type)
+    }
+
+    /**
+     * 结算数据
+     * @returns {*}
+     */
+    function requsetSettleData(data_type) {
+        return requestData(data_type);
+    }
+
+    /***
+     * 代扣动态金额变化
+     * @param data_type
+     */
+    function requestWithholdAmt(data_type) {
+        return requestAmtDataValue(data_type)
+    }
+
+    /**
+     * 代扣笔数动态交易笔数
+     * @param data_type
+     */
+    function requestWithholdQty(data_type) {
+        return requestQtyDataValue(data_type)
+    }
+
+    /***
+     * *
+     *
+     * 获取json 长度
+     * */
+    function getJsonLength(jsonData){
+        if (jsonData==null){
+            return 0;
+        }
+        var jsonLength = 0;
+        for(var item in jsonData){
+            jsonLength++;
+        }
+        return jsonLength;
+    }
+
+
+    /**********************************************************************************************************************************
+     *
+     *
+     *   样式图例
+     *
+     **********************************************************************************************************************************/
+
+    /***==========================================================================================================================================
+     *
+     * 图 1
+     * 滚动的图例
+     *
+     ***==========================================================================================================================================*/
+
+    // 模拟数据
+        var order_data =[
+            {'customer': '张三', 'order_name': '费用报销单', 'amt': 99.9},
+            {'customer': '嘉润公司', 'order_name': '差旅费用累', 'amt': 99.9},
+            {'customer': '淘宝', 'order_name': '专业用户取款', 'amt': 99.9},
+            {'customer': '京东', 'order_name': '饲料原料款', 'amt': 99.9}
+        ]
+
+    var one_scroll_picture = self.setInterval("one_scroll_picture()", 2000);
+    // 订单数量
+    var order_count = 0;
+    var total_amt = 0;
+    function one_scroll_picture() {
+        document.getElementById("details_1").innerHTML = order_data[0].customer + " " + order_data[0].order_name + ": " + parseFloat(order_data[0].amt).toFixed(2).toLocaleString() + "元";
+        document.getElementById("details_2").innerHTML = order_data[1].customer + " " + order_data[1].order_name + ": " + parseFloat(order_data[1].amt).toFixed(2).toLocaleString() + "元";
+        document.getElementById("details_3").innerHTML = order_data[2].customer + " " + order_data[2].order_name + ": " + parseFloat(order_data[2].amt).toFixed(2).toLocaleString() + "元";
+        document.getElementById("details_4").innerHTML = order_data[3].customer + " " + order_data[3].order_name + ": " + parseFloat(order_data[3].amt).toFixed(2).toLocaleString() + "元";
+        //var temp = order_data[0];
+        order_data.shift();
+        order_count += 1;
+        total_amt += order_data[0].amt;
+        var t = "¥" + parseFloat(total_amt).toLocaleString();
+        document.getElementById("total").innerHTML = t;
+        document.getElementById("order_count").innerHTML = "成交单数: " + order_count + "笔";
+    }
+
+
+    /***=================================================================================================================================================================
+     *
+     *  图2
+     * 滚动的 折线图例  动态数据
+     *
+     ***=================================================================================================================================================================*/
+
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        },
+        // 颜色 定义
+        colors: ['#ED561B', '#50B432', '#058DC7', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+    });
+
+    function activeLastPointToolip(chart) {
+        var points = chart.series[0].points;
+        chart.tooltip.refresh(points[points.length -1]);
+    }
+
+
+   var totalNum = Math.random() * 100
+    // 第一个折线图
+    $('#lineGraph').highcharts({
+        chart: {
+            backgroundColor: 'rgba(0,0,0,0)',
+            type: 'spline',
+            animation: Highcharts.svg, // don't animate in old IE
+            marginRight: 10,
+            events: {
+                load: function () {
+                    // set up the updating of the chart each second
+                    var series = this.series[0],
+                        chart = this;
+                    setInterval(function () {
+                        var value = requestWithholdAmtQty('withhold');// 动态金额
+                        if (value < 0){
+                            value = Math.random() * 100
+                        }
+                        if(withholdQty>0){
+                            totalNum = withholdQty;     // 动态交易笔数
+                        }
+                        var x = (new Date()).getTime(), // current time
+                            y = value;
+                        series.addPoint([x, y], true, true);
+                        activeLastPointToolip(chart);
+                    }, 20000); // 每2秒
+                }
+            }
+        },
+        title: {
+            text: '银行代扣收款动态信息'
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: '金额'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true,
+                            allowOverlap: true
+                        }
+                    },
+                    column: {
+                        colorByPoint: true
+                    }
+                },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + ':</b><p style="color: #12538b">' +
+                    Highcharts.numberFormat(this.y, 2) + '</p>万元<br/><b>交易笔数:</b><p style="color: #8b6f37">'
+                    + Highcharts.numberFormat(totalNum, 2) + '</p> 笔<br/>'
+                    + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x);
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        series: [{
+            name: '交易金额',
+            data: (function () {
+                // generate an array of random data
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random() * 10
+                    });
+                }
+                return data;
+            }())
+        }],
+        credits: {
+            enabled: false
+        },
+    }, function (c) {
+        activeLastPointToolip(c)
+    });
+
+
+
+
+    /***==================================================================================================**/
+    // 第二个折线图
+    $('#tow').highcharts({
+        chart: {
+            type: 'spline',
+            backgroundColor: 'rgba(0,0,0,0)',
+            animation: Highcharts.svg, // don't animate in old IE
+            marginRight: 10,
+            events: {
+                load: function () {
+                    // set up the updating of the chart each second
+                    var series = this.series[0],
+                        chart = this;
+                    setInterval(function () {
+                        var value = requestWithholdQty('dynamic_qty') // 动态交易笔数
+                        var x = (new Date()).getTime(), // current time
+                            y = value;   // 控制值的大小
+                        series.addPoint([x, y], true, true);
+                        activeLastPointToolip(chart);
+                    }, 100000);  // 5秒更新一次
+                }
+            }
+        },
+        title: {
+            text: '收款笔数动态变化比例图'
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: '笔数'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                    Highcharts.numberFormat(this.y, 2);
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        series: [{
+            name: '交易笔数',
+            data: (function () {
+                // generate an array of random data
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random()*100   // 控制y轴的大小
+                    });
+                }
+                return data;
+            }()),
+            color: Highcharts.getOptions().colors[5]
+        }],
+        credits: {
+            enabled: false
+        }
+    }, function(c) {
+        activeLastPointToolip(c)
+    });
+
+    /***
+     * 获取随机值
+     * @returns {number}
+     */
+    var getIntValue = function () {
+        return Math.ceil(Math.random()*10+Math.random()*20)
+    }
+
+    /***
+     * 获取float 数值
+     * */
+    var getFloatValue = function () {
+        var value = Math.random()*10+Math.random()
+        return parseFloat(value.toFixed(2))
+    }
+
+    //3d图 柱形图  叠加
+    var approve_init =function () {
+        $(function () {
+            var doingData = [getIntValue(), getIntValue(), getIntValue(), getIntValue(), getIntValue()];
+            var doneData = [getIntValue(), getIntValue(), getIntValue(), getIntValue(), getIntValue()];
+            var approveData = requestApproveData('approve');
+            if (approveData!=null && getJsonLength(approveData)>0){
+                doneData = [Number(approveData['IMAGEDONE']), Number(approveData['BILLERDONE']), Number(approveData['SHAREDONE']),Number(approveData['PRINCIPALDONE']),Number(approveData['MANAGEDONE']),Number(approveData['CEODONE'])];
+                doingData = [Number(approveData['IMAGEDOING']), Number(approveData['BILLERDOING']), Number(approveData['SHAREDOING']), Number(approveData['PRINCIPALEDOING']),Number(approveData['MANAGEDOING']),Number(approveData['CEODONE'])];
+            }
+
+            Highcharts.chart('three', {
+                chart: {
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    type: 'column',
+                    margin: 75,
+                    options3d: {
+                        enabled: true,
+                        alpha: 15,
+                        beta: 15,
+                        depth: 110
+                    },
+
+                },
+                navigation: {
+                    buttonOptions: {
+                        enabled: false
+                    }
+                },
+                title: {
+                    text: 'wens审批节点'
+                },
+                xAxis: {
+                    categories: ['影像', '业务员', '共享专员', '负责人', '总经理', '总	裁']
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '处理节点总量'
+                    },
+                    stackLabels: {
+                        enabled: true,
+                        style: {
+                            fontWeight: 'bold',
+                            color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                        }
+                    }
+                },
+                legend: {
+                    align: 'right',
+                    x: -30,
+                    verticalAlign: 'top',
+                    y: 25,
+                    floating: true,
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+                    borderColor: '#CCC',
+                    borderWidth: 1,
+                    shadow: false
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.x + '</b><br/>' +
+                            this.series.name + ': ' + this.y + '<br/>' +
+                            '总量: ' + this.point.stackTotal + '个';
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        depth: 40,
+                        stacking: true,
+                        grouping: false,
+                        groupZPadding: 10,
+                        dataLabels: {
+                            enabled: true,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                            style: {
+                                textShadow: '0 0 3px black'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: '处理中',
+                    data: doingData,
+                    //data: [5, 3, 4, 7, 2],
+                    //data: [Number(approveData['imageApproveDoing']), Number(approveData['billerApproverDoing']), Number(approveData['shareApproveDoing']), Number(approveData['principalApproveDoing']),Number(approveData['manageApproveDoing']),Number(approveData['CEOApproveDoing'])],
+                    //data: [Number(approveData['IMAGEDOING']), Number(approveData['BILLERDOING']), Number(approveData['SHAREDOING']), Number(approveData['PRINCIPALEDOING']),Number(approveData['MANAGEDOING']),Number(approveData['CEODONE'])],
+                    stack: 0,
+                }, {
+                    name: '完成',
+                    data: doneData,
+                    //data: [2, 2, 8, 2, 1],
+                    //data: [Number(approveData['IMAGEDONE']), Number(approveData['BILLERDONE']), Number(approveData['SHAREDONE']),Number(approveData['PRINCIPALDONE']),Number(approveData['MANAGEDONE']),Number(approveData['CEODONE'])],
+                    //data: [Number(approveData['imageApproveDone']), Number(approveData['billerApproverDone']), Number(approveData['shareApproveDone']),Number(approveData['principalApproveDone']),Number(approveData['manageApproveDone']),Number(approveData['CEOApproveDone'])],
+                    stack: 0
+                }],
+                credits: {
+                    enabled: false
+                },
+            });
+        });
+    }
+
+
+    /****
+     * =====================================================================================================================================
+     * @type {jQuery|HTMLElement}
+     *
+     * 代扣  年 月 日  代扣笔数
+     * ==================================================================================================================================
+     */
+
+    var zoomType = function(){
+        $(function () {
+            var yin_jie_tong = [getFloatValue(), getFloatValue(), getFloatValue()]
+            var yin_jie_tong_num = [getIntValue(), getIntValue(), getIntValue()]
+            var agricultural_back = [getFloatValue(), getFloatValue(), getFloatValue()]
+            var agricultural_back_num = [getIntValue(), getIntValue(), getIntValue()]
+            var unionPay = [getFloatValue(), getFloatValue(), getFloatValue()]
+            var unionPay_num = [getIntValue(), getIntValue(), getIntValue()]
+            // 获取代扣数据包
+            var withholdData = requestDatass('withhold')
+            if(withholdData!=null){
+                yin_jie_tong = withholdData['yin_jie_tong']
+                yin_jie_tong_num = withholdData['yin_jie_tong_num']
+                agricultural_back = withholdData['agricultural_back']
+                agricultural_back_num = withholdData['agricultural_back_num']
+                unionPay = withholdData['unionPay']
+                unionPay_num = withholdData['unionPay_num']
+            }
+            $('#four').highcharts({
+                chart: {
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    zoomType: 'xy'
+                },
+                // 隐藏导航按钮 下载按钮
+                navigation: {
+                    buttonOptions: {
+                        enabled: false
+                    }
+                },
+                title: {
+                    text: '温氏代扣银行年月日数据比例'
+                },
+                subtitle: {
+                    text: '数据来源:温氏财务共享'
+                },
+                xAxis: [{
+                    categories: ['日度', '月度', '年度'],
+                    crosshair: true
+                }],
+                yAxis: [{ // Primary yAxis
+
+                    labels: {
+                        format: '{value}万元',
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        }
+                    },
+                    title: {
+                        text: '金额',
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        }
+                    }
+                }, { // Secondary yAxis
+                    title: {
+                        text: '笔数',
+                        style: {
+                            color: Highcharts.getOptions().colors[0]
+                        }
+                    },
+                    labels: {
+                        format: '{value}',
+                        style: {
+                            color: Highcharts.getOptions().colors[0]
+                        }
+                    },
+                    opposite: true
+                }],
+                tooltip: {
+                    shared: true
+                },
+                //
+                plotOptions: {
+                    // 条形图
+                    column: {
+                        //stacking: 'normal',
+                        dataLabels: {
+                            enabled: true,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                            style: {
+                                textShadow: '0 0 3px black'
+                            }
+                        }
+                    },
+                    // 折线图
+                    spline:{
+                        dataLabels: {
+                            enabled: true,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'red',
+                            style: {
+                                textShadow: '0 0 3px black'
+                            }
+                        }
+                    }
+                },
+    //            legend: {
+    //                // layout: 'vertical',
+    //                align: 'center',
+    //                // x: 120,
+    //                verticalAlign: 'bottom',
+    //                y: 31,
+    //                floating: true,
+    //                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+    //            },
+                series: [{
+                            name: '银结通',
+                            type: 'column',
+                            //dataa: [withholdData[''],withholdData[''],withholdData['']],
+                            //     日，银结通   月，农行   年 银联
+                            data: yin_jie_tong,
+                            tooltip: {
+                                valueSuffix: ' 万元'
+                            },
+                            color: Highcharts.getOptions().colors[2]
+                         },
+
+                         {
+                             name: '农行',
+                             type: 'column',
+                             data: agricultural_back,
+                             tooltip: {
+                                 valueSuffix: ' 万元'
+                             },
+                             color: Highcharts.getOptions().colors[3]
+                         },
+
+                         {
+                             name: '银联',
+                             type: 'column',
+                             data: unionPay,
+                             tooltip: {
+                                 valueSuffix: ' 万元'
+                             },
+                             color: Highcharts.getOptions().colors[4]
+                         },
+
+                         {
+                             name: '银结笔数',
+                             type: 'spline',
+                             yAxis: 1,
+                             data: yin_jie_tong_num,
+                             tooltip: {
+                                 valueSuffix: ' 笔'
+                             },
+                             color: Highcharts.getOptions().colors[2]
+                         },
+                         {
+                             name: '农行笔数',
+                             type: 'spline',
+                             yAxis: 1,
+                             data: agricultural_back_num,
+                             tooltip: {
+                                 valueSuffix: ' 笔'
+                             },
+                             color: Highcharts.getOptions().colors[3]
+                         },
+                         {
+                             name: '银联笔数',
+                             type: 'spline',
+                             yAxis: 1,
+                             data: unionPay_num,
+
+                             tooltip: {
+                                 valueSuffix: ' 笔'
+                             },
+                             color: Highcharts.getOptions().colors[4]
+                         },
+                        ],
+                credits: {
+                    enabled: false
+                },
+            });
+        });
+    }
+
+    /*************************************************************************************************
+     *
+     * 数据更新
+     *
+     * ************************************************************************************************
+     */
+    // 定时执行更新数据
+    $(function () {
+        zoomType();
+        approve_init();
+        setInterval(zoomType(), 30000);
+        setInterval(approve_init(), 60000);
+    })
+
+</script>
+<script>
+//    var series = [{
+//    // 地图数据列
+//    type: 'map',
+//    //backgroundColor: 'rgba(0,0,0,0)',
+//    mapData: Highcharts.maps["cn/china"],
+//    joinBy: 'hc-key',
+//    name: '随机数据',
+//    states: {
+//        hover: {
+//            color: '#a4edba'
+//        }
+//    },
+//    showInLegend: false
+//}],
+//    lastLevel = null;
+//// 中国城市分布数据
+//// https://data.jianshukeji.com/geochina/cities.json
+//// 这里用 JSONP 跨域访问
+//$.getJSON('https://data.jianshukeji.com/jsonp?filename=geochina/cities.json&callback=?', function(data) {
+//    for(var name in data) {
+//        var d = data[name];
+//        if(d.level.level !== lastLevel) {
+//            series.push({
+//                name: d.level.name,
+//                visible: series.length < 4,
+//                data: []
+//            });
+//            lastLevel = d.level.level;
+//        }
+//        series[series.length -1].data.push({
+//            name: name,
+//            properties: d,
+//            x: d.x,
+//            y: -d.y
+//        });
+//    }
+//    for(var i=1;i<series.length;i++) {
+//        series[i].name += '（' + series[i].data.length + ' 个）';
+//    }
+//    // return false;
+//    // 采用jquery 初始化
+//    // $('#middle_map').highcharts('Map', {
+//    // 采用highcharts 初始化
+//    var map = new Highcharts.Map('middle_map', {
+//        chart: {
+//            backgroundColor: 'rgba(0,0,0,0)',
+//            type: 'mappoint'
+//        },
+//        navigation: {
+//            buttonOptions: {
+//                enabled: false
+//            }
+//        },
+//        title: {
+//            text: '温氏子公司分布'
+//        },
+//        subtitle: {
+//            text: '城市来源：<a href="https://wens.com.cn">温氏大数据</a>'
+//        },
+//        mapNavigation: {
+//            enabled: false,
+//            buttonOptions: {
+//                verticalAlign: 'bottom'
+//            }
+//        },
+//        legend: {
+//            layout: 'vertical',
+//            align: 'left',
+//            floating: true,
+//            x: 30,
+//            enabled: false,
+//        },
+//        tooltip: {
+//            useHTML: true,
+//            headerFormat: '<small><b>{point.key}</small>:</b><table>',
+//            pointFormat: '<tr><td>城市级别</td><td>{series.name}</td></tr>' 	+
+//            '<tr><td>所属省份</td><td>{point.properties.province}</td></tr>' +
+//            '<tr><td>经纬度</td><td>({point.properties.lon:.2f}, {point.properties.lat:.2f})</td></tr>' +
+//            '<tr><td>城市编号</td><td>{point.properties.cityNo}</td></tr>',
+//            footerFormat: '</table>',
+//        },
+//        plotOptions: {
+//            series: {
+//                dataLabels: {
+//                    enabled: false
+//                },
+//                marker: {
+//                    radius: 3
+//                }
+//            }
+//        },
+//        credits: {
+//            enabled: false
+//        },
+//        series: series
+//    });
+//});
+
+</script>
+
+<script>
+// chinaCitys.json 里包含中国一线到三线城市的坐标值及经纬度值
+$.getJSON('https://data.jianshukeji.com/jsonp?filename=geochina/cities.json&callback=?', function(chinaCity) {
+    var beijing =   chinaCity['北京'],
+        shanghai =  chinaCity['上海'],
+        guangzhou = chinaCity['广州'],
+        guiyang =   chinaCity['贵阳'],
+        yunfu = chinaCity['云浮'],
+        data = [{
+            // 直接用转换好的坐标位置
+            x: beijing.x,
+            y: -beijing.y,
+            name: beijing.name,
+            color: 'blue',
+        },{
+            // 用经纬度，经纬度转换需要额外的引入 proj4js 库
+            lat: shanghai.lat,
+            lon: shanghai.lon,
+            color: 'green',
+            name: shanghai.name
+        },{
+            // 经纬度查询请到 http://www.gpsspg.com/maps.htm
+            lat: 30.2741702308,
+            lon: 120.1551656314,
+            color: 'red',
+            name: '杭州'
+        },
+                {
+                    // 经纬度查询请到 http://www.gpsspg.com/maps.htm
+                    lat: guiyang.lat,
+                    lon: guiyang.lon,
+                    color: 'black',
+                    name: '贵阳'
+                },
+                {
+                    // 经纬度查询请到 http://www.gpsspg.com/maps.htm
+                    lat: yunfu.lat,
+                    lon: yunfu.lon,
+                    color: 'yellow',
+                    name: '温氏集团'
+                },
+                {
+                    // 经纬度查询请到 http://www.gpsspg.com/maps.htm
+                    lat: 22.6957300000,
+                    lon: 112.2253600000,
+                    color: '#006cee',
+                    name: '佳润公司'
+                }
+               ];
+    var map = new Highcharts.Map('five_map', {
+        chart: {
+            backgroundColor: 'rgba(0,0,0,0)',
+        },
+        title: {
+            text: '温氏子公司分布图'
+        },
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+        tooltip: {
+            useHTML: true,
+            formatter: function() {
+                return this.point.name;
+            }
+        },
+        navigation: {
+            buttonOptions: {
+                enabled: false
+            }
+        },
+        // colorAxis: {
+        //     min: 0,
+        //     minColor: '#fff',
+        //     maxColor: '#006cee',
+        //     labels:{
+        //         style:{
+        //             "color":"red","fontWeight":"bold"
+        //         }
+        //     }
+        // },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true
+                },
+                marker: {
+                    radius: 3
+                }
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            // 空数据列，用于展示底图
+            mapData: Highcharts.maps['cn/china'],
+            showInLegend: false
+        },{
+            type: 'mappoint',
+            name: '分布图',
+            data: data,
+            //joinBy: 'name',
+        }]
+    });
+});
+
+
+</script>
+</body>
+</html>

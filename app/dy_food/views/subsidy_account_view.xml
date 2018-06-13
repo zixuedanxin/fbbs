@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: subsidy_view 
+# author: tangdayi
+# data: 2018年03月19日 22时56分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <record id="dy_subsidy_account_view_tree" model="ir.ui.view">
+            <field name="name">补贴账户</field>
+            <field name="model">dy.subsidy.account</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="number"/>
+                    <field name="company_id"/>
+                    <field name="department_id"/>
+                    <field name="user_id"/>
+                    <field name="mobile"/>
+                    <field name="email"/>
+                    <field name="subsidy_id"/>
+                    <field name="subsidy_amount"/>
+                    <field name="remark"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="dy_subsidy_account_view_form" model="ir.ui.view">
+            <field name="name">dy.subsidy.account.form</field>
+            <field name="model">dy.subsidy.account</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4" string="人员信息">
+                            <field name="user_id" options="{'no_create_edit': 1, 'no_open': 1, 'no_create': 1}"/>
+                            <field name="mobile"/>
+                            <field name="email"/>
+                        </group>
+                        <group col="4" string="单位信息">
+                            <field name="company_id" options="{'no_create_edit': 1, 'no_open': 1, 'no_create': 1}"/>
+                            <field name="department_id" options="{'no_create_edit': 1, 'no_open': 1, 'no_create': 1}"/>
+                        </group>
+                        <group col="4" string="其他">
+                            <field name="subsidy_id" options="{'no_create_edit': 1, 'no_open': 1, 'no_create': 1}"/>
+                            <field name="subsidy_amount"/>
+                            <field name="number" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="remark"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="food_dy_subsidy_account_action" model="ir.actions.act_window">
+            <field name="name">补贴账户</field>
+            <field name="res_model">dy.subsidy.account</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="dy_subsidy_account_view_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    点击此处建立一个员工对应的补贴账户。
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: product_view 
+# author: tangdayi
+# data: 2018年03月15日 22时01分
+# ===================================================
+-->
+<odoo>
+    <data>
+
+        <!--Action for Products-->
+        <record id="lunch_product_action" model="ir.actions.act_window">
+            <field name="name">产品</field>
+            <field name="res_model">lunch.product</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                点击这里，创建用餐品种！
+            </p>
+              <p>
+                通过食物的名称、类别、价格和供应商来定义一个产品。
+              </p>
+            </field>
+        </record>
+
+
+        <!--View for Products-->
+        <record id="lunch_product_view_tree" model="ir.ui.view">
+            <field name="name">lunch.product.tree</field>
+            <field name="model">lunch.product</field>
+            <field name="arch" type="xml">
+                <tree string="食物列表">
+                    <field name="name"/>
+                    <field name="category_id"/>
+                    <field name="supplier"/>
+                    <field name="description"/>
+                    <field name="price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_lunch_product_kanban" model="ir.ui.view">
+            <field name="name">lunch.product.kanban</field>
+            <field name="model">lunch.product</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="category_id"/>
+                    <field name="supplier"/>
+                    <field name="description"/>
+                    <field name="price"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title"><t t-esc="record.name.value"/></strong>
+                                    </div>
+                                    <span class="badge pull-right">
+                                        Price: <t t-esc="record.price.value"/>
+                                    </span>
+                                </div>
+                                <div>
+                                    <t t-esc="record.supplier.value"/>
+                                </div>
+                                <div>
+                                    <t t-esc="record.description.value"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+
+        <record id="action_server_lunch_archive_product" model="ir.actions.server">
+            <field name="name">归档/还原产品</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_lunch_product" />
+            <field name="binding_model_id" ref="model_lunch_product" />
+            <field name="state">code</field>
+            <field name="code">records.toggle_active()</field>
+        </record>
+
+        <!-- Search for product -->
+        <record id="lunch_product_view_search" model="ir.ui.view">
+            <field name="name">lunch.product.search</field>
+            <field name="model">lunch.product</field>
+            <field name="arch" type="xml">
+                <search string="食物搜索">
+                    <field name="name"/>
+                    <field name="category_id"/>
+                    <field name="supplier"/>
+                    <field name="description"/>
+                    <group expand="0" string="Group By">
+                        <filter name="supplier" string="供应商" context="{'group_by': 'supplier'}"/>
+                        <filter name="category" string="分类" context="{'group_by': 'category_id'}"/>
+                        <filter name="inactive" string="已归档" domain="[('active','=',False)]"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="lunch_product_view_form" model="ir.ui.view">
+            <field name="name">lunch.product.form</field>
+            <field name="model">lunch.product</field>
+            <field name="arch" type="xml">
+                <form string="Products Form">
+                    <header>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name='name'/>
+                                <field name='category_id'/>
+                            </group>
+                            <group>
+                                <field name='supplier'/>
+                                <field name='price'/>
+                            </group>
+                        </group>
+                        <label for='description'/>
+                        <field name='description'/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

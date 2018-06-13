@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: subsidy_view 
+# author: tangdayi
+# data: 2018年03月19日 22时56分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <record id="dy_subsidy_order_view_tree" model="ir.ui.view">
+            <field name="name">补贴单</field>
+            <field name="model">dy.subsidy.order</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="number"/>
+                    <field name="name"/>
+                    <field name="subsidy_type_id" options="{'no_create_edit': 1, 'no_open': 1, 'no_create': 1}"/>
+                    <field name="subsidy_model_id" options="{'no_create_edit': 1, 'no_open': 1, 'no_create': 1}"/>
+                    <field name="amount"/>
+                    <field name="company_id" options="{'no_create_edit': 1, 'no_open': 1, 'no_create': 1}"/>
+                    <field name="remark"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="dy_subsidy_order_view_form" model="ir.ui.view">
+            <field name="name">dy.subsidy.order.form</field>
+            <field name="model">dy.subsidy.order</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="2">
+                            <field name="number" readnoly="1"/>
+                        </group>
+                        <group col="4">
+
+                            <field name="name"/>
+                            <field name="subsidy_type_id" options="{'no_create_edit': 1, 'no_open': 1, 'no_create': 1}"/>
+                            <field name="amount"/>
+                            <field name="biz_date"/>
+                            <field name="company_id" options="{'no_create_edit': 1, 'no_open': 1, 'no_create': 1}"/>
+                        </group>
+                        <group>
+                            <field name="remark"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="food_dy_subsidy_order_action" model="ir.actions.act_window">
+            <field name="name">补贴单</field>
+            <field name="res_model">dy.subsidy.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="dy_subsidy_order_view_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    点击此处建立一个补贴单。
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

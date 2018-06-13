@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# ===================================================
+# projectname: FBBFood
+# file_name: menus
+# author: tangdayi
+# data: 2018年01月16日 14时17分
+# ===================================================
+-->
+<openerp>
+    <data noupdate="0">
+
+        <record id="base.main_partner" model="res.partner" context="{'default_is_company': True}">
+            <field name="name">广西饭班帮网络科技有限公司</field>
+            <field name="company_id" eval="None"/>
+            <field name="image" type="base64" file="dy_init/static/img/logo.png"/>
+            <field name="customer" eval="True"/>
+            <field name="supplier" eval="True"/>
+            <field name="is_company" eval="True"/>
+            <field name="street">广西桂林文化路220</field>
+            <field name="street">广西桂林文化路220</field>
+            <field name="city">广西桂林</field>
+            <field name="zip">520031</field>
+            <field name="phone">+8607662986881</field>
+            <field name="email">yidatang@sina.com</field>
+            <field name="website">www.fbb.com</field>
+        </record>
+
+        <record id="base.main_company" model="res.company">
+            <field name="name">广西饭班帮网络科技有限公司</field>
+            <field name="partner_id" ref="base.main_partner"/>
+            <field name="rml_header1">FBB食品，自然好品质</field>
+            <field name="currency_id" ref="base.CNY"/>
+        </record>
+
+        <record model="res.partner" id="base.partner_root">
+            <field name="name">Tdy</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="supplier" eval="True"/>
+            <field name="customer" eval="False"/>
+            <field name="email">yidatang@sina.com</field>
+        </record>
+
+        <record model="res.users" id="base.user_root">
+            <!--<field name="login">Administrator</field>-->
+            <field name="partner_id" ref="base.partner_root"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+            <field name="tz">Asia/Shanghai</field>
+            <field name="lang">zh_CN</field>
+            <field name="signature"><![CDATA[<span>--<br/>超级管理员</span>]]></field>
+            <field eval="[(4,ref('base.group_no_one')), (4,ref('base.group_multi_company'))]" name="groups_id"/>
+        </record>
+
+
+    </data>
+</openerp>

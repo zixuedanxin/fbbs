@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: food_meuns 
+# author: tangdayi
+# data: 2018年03月19日 23时15分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <!-- 基础设置 -->
+
+        <menuitem name="补贴管理"
+                  parent="dy_food.menu_lunch"
+                  id="menu_subsidy_order_admin"
+                  sequence="52"
+                  groups="dy_food.group_lunch_manager"/>
+
+        <menuitem id="menu_dy_food_subsidy_order"
+                  parent="menu_subsidy_order_admin"
+                  name="补贴单"
+                  sequence="10"
+                  action="dy_food.food_dy_subsidy_order_action"/>
+
+        <menuitem id="menu_dy_food_subsidy_account"
+                  name="补贴账户"
+                  parent="menu_subsidy_order_admin"
+                  sequence="20"
+                  action="dy_food.food_dy_subsidy_account_action"/>
+
+        <menuitem id="menu_dy_food_subsidy_type"
+                  parent="menu_subsidy_order_admin"
+                  name="补贴类型"
+                  sequence="30"
+                  action="dy_food.food_dy_subsidy_type_action"/>
+
+        <menuitem id="menu_dy_food_subsidy_model"
+                  parent="menu_subsidy_order_admin"
+                  name="补贴模式"
+                  sequence="40"
+                  action="dy_food.food_dy_subsidy_model_action"/>
+
+        <!-- 用评价及反馈  -->
+        <menuitem name="用户反馈"
+                  parent="dy_food.menu_lunch"
+                  id="menu_feedback_user_manger"
+                  sequence="60"
+                  groups="dy_food.group_lunch_manager"/>
+
+        <menuitem id="menu_feedback_user"
+                  name="用户评价"
+                  parent="menu_feedback_user_manger"
+                  sequence="60"
+                  action="dy_system.food_dy_feedback_action"
+                  groups="dy_food.group_lunch_manager"/>
+
+        <menuitem id="menu_score_setting"
+                  name="评分设置"
+                  parent="menu_feedback_user_manger"
+                  sequence="70"
+                  action="dy_base.base_dy_score_action"
+                  groups="dy_food.group_lunch_manager"/>
+
+    </data>
+</odoo>

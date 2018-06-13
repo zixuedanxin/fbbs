@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+# ===================================================
+# projectname: FBBFood
+# file_name: menus
+# author: tangdayi
+# data: 2018年01月16日 14时07分
+# ===================================================
+-->
+<openerp>
+    <data noupdate="0">
+
+      <function name="set_format" model="res.lang"/>
+      <function name="translate_hard" model="res.lang"/>
+
+    </data>
+</openerp>

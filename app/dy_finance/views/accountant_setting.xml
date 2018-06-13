@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: accountant_setting 
+# author: tangdayi
+# data: 2018年05月23日 21时37分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <record id="dy_accountant_setting_tree" model="ir.ui.view">
+            <field name="name">会计科目配置</field>
+            <field name="model">dy.accountant.account.setting</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="company_id"/>
+                    <field name="name"/>
+                    <field name="biz_date"/>
+                    <field name="remark"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="dy_accountant_setting_view_form" model="ir.ui.view">
+            <field name="name">dy.accountant.account.setting</field>
+            <field name="model">dy.accountant.account.setting</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                         <button name="action_create_account" confirm='确定创建科目表吗？' string="创建科目表" class="oe_highlight" type="object"/>
+                     </header>
+                    <sheet>
+                        <group col="4">
+                            <field name="company_id"/>
+                            <field name="name"/>
+                            <field name="biz_date"/>
+                        </group>
+                        <group>
+                            <field name="remark"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="dy_accountant_setting_search" model="ir.ui.view">
+            <field name="name">dy.accountant.account.setting.search</field>
+            <field name="model">dy.accountant.account.setting</field>
+            <field name="arch" type="xml">
+                <search string="搜索">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="dy_accountant_setting_action" model="ir.actions.act_window">
+            <field name="name">会计科目配置</field>
+            <field name="res_model">dy.accountant.account.setting</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="dy_accountant_setting_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    点击此处建立一个公司的会计科目。
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

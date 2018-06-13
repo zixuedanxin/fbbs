@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: menus
+# author: tangdayi
+# data: 2018年03月19日 01时18分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <!-- 根菜单  -->
+        <menuitem id='menu_root_dy_system'
+                  name='系统'
+                  sequence="106"/>
+
+        <menuitem id='menu_dy_system_restaurant_mgr'
+                  parent="menu_root_dy_system"
+                  name='数据配置'
+                  sequence="10"/>
+
+        <menuitem id='menu_dy_system_control_mgr'
+                  parent="menu_root_dy_system"
+                  name='控制管理'
+                  sequence="100"/>
+
+        <menuitem id='menu_dy_system_base_setting_mgr'
+                  parent="menu_root_dy_system"
+                  name='基础设置'
+                  sequence="200"/>
+
+
+        <!--数据配置-->
+
+        <menuitem id='menu_dy_system_restaurant_list'
+                  parent="menu_dy_system_restaurant_mgr"
+                  name='餐厅门店'
+                  action="dy_base.base_dy_restaurant_action"
+                  sequence="20"/>
+
+        <menuitem id="menu_dy_res_company_form"
+                  action="dy_base.action_dy_company_form"
+                  name='公司'
+                  sequence="30"
+                  parent="menu_dy_system_restaurant_mgr"/>
+
+        <menuitem id="menu_dy_department_form"
+                  action="dy_base.action_base_dy_department"
+                  name='部门'
+                  sequence="40"
+                  parent="menu_dy_system_restaurant_mgr"/>
+
+
+
+        <!--控制管理-->
+        <menuitem id="menu_dy_res_users"
+                  action="dy_system.action_dy_base_res_users"
+                  name='用户与权限'
+                  sequence="10"
+                  parent="menu_dy_system_control_mgr"/>
+
+
+
+        <!--基础设置-->
+        <menuitem id='menu_dy_system_dy_store_type'
+                  parent="menu_dy_system_base_setting_mgr"
+                  name='餐厅类别'
+                  action="dy_base.base_dy_store_type_action"
+                  sequence="10"/>
+
+
+        <menuitem id='menu_dy_system_base_setting'
+                  parent="menu_dy_system_base_setting_mgr"
+                  name='地址设置'
+                  sequence="100"/>
+
+        <menuitem name="省"
+                  id="menu_dy_system_province_setting"
+                  parent="menu_dy_system_base_setting"
+                  action="dy_base.action_dy_province"
+                  sequence="10"/>
+
+        <menuitem name="市"
+                  id="menu_dy_system_city_setting"
+                  parent="menu_dy_system_base_setting"
+                  action="dy_base.action_dy_city"
+                  sequence="20"/>
+
+        <menuitem name="县/区"
+                  id="menu_dy_system_county_setting"
+                  parent="menu_dy_system_base_setting"
+                  action="dy_base.action_dy_county"
+                  sequence="30"/>
+
+        <menuitem name="镇"
+                  id="menu_dy_system_town_setting"
+                  parent="menu_dy_system_base_setting"
+                  action="dy_base.action_dy_town"
+                  sequence="40"/>
+
+    </data>
+</odoo>

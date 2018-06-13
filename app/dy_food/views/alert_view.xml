@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: alert_view 
+# author: tangdayi
+# data: 2018年03月15日 21时47分
+# ===================================================
+-->
+<odoo>
+    <data>
+
+        <record id="lunch_alert_view_search" model="ir.ui.view">
+            <field name="name">lunch.alert.search</field>
+            <field name="model">lunch.alert</field>
+            <field name="arch" type="xml">
+                <search string="搜索">
+                    <field name="message"/>
+                    <filter name="inactive" string="归档" domain="[('active','=',False)]"/>
+                </search>
+            </field>
+        </record>
+
+
+        <!--Action for Alert-->
+        <record id="lunch_alert_action" model="ir.actions.act_window">
+            <field name="name">提示</field>
+            <field name="res_model">lunch.alert</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="search_view_id" ref="lunch_alert_view_search"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                点击建立一个用餐提示。
+            </p>
+              <p>
+                提醒功能用于提醒员工与午餐订单相关的可能问题。
+                要创建午餐提醒您必须定义其循环，即执行提醒和显示信息的时间间隔。            </p>
+            <p>
+                比如: <br/>
+                - 重复: 每天<br/>
+"               - 时间间隔: 从 00h00 am to 11h59 pm<br/>
+"               - 信息: \"你必须在 10h30 am前下订单\"
+              </p>
+            </field>
+        </record>
+
+
+
+        <!--view for alerts-->
+        <record id="lunch_alert_view_tree" model="ir.ui.view">
+            <field name="name">lunch.alert.tree</field>
+            <field name="model">lunch.alert</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="message"/>
+                    <field name="alert_type"/>
+                    <field name='start_hour' widget='float_time'/>
+                    <field name='end_hour' widget='float_time'/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_lunch_alert_kanban" model="ir.ui.view">
+            <field name="name">lunch.alert.kanban</field>
+            <field name="model">lunch.alert</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="message"/>
+                    <field name="alert_type"/>
+                    <field name='start_hour'/>
+                    <field name='end_hour'/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_record_top">
+                                    <strong class="o_kanban_record_title"><t t-esc="record.message.value"/></strong>
+                                </div>
+                                <div class="row mb4">
+                                    <div class="col-xs-6">
+                                        Between: <t t-esc="record.start_hour.value"/> -
+                                        <t t-esc="record.end_hour.value"/>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span class="badge pull-right">
+                                            <t t-esc="record.alert_type.value"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="lunch_alert_view_form" model="ir.ui.view">
+            <field name="name">lunch.alert.form</field>
+            <field name="model">lunch.alert</field>
+            <field name="arch" type="xml">
+                <form>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object"
+                            class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <group>
+                        <group string="预定日期">
+                            <field name="alert_type"/>
+                            <field name="specific_day" attrs="{'invisible': [('alert_type','!=','specific')], 'required':[('alert_type','=','specific')]}"/>
+                        </group>
+                        <group string="预定时间">
+                            <field name='start_hour' widget='float_time'/>
+                            <field name='end_hour' widget='float_time'/>
+                        </group>
+                        <group attrs="{'invisible': [('alert_type','!=','week')]}">
+                            <group col="4">
+                                <field name="monday"/>
+                                <field name="tuesday"/>
+                                <field name="wednesday"/>
+                                <field name="thursday"/>
+                                <field name="friday"/>
+                                <field name="saturday"/>
+                                <field name="sunday"/>
+                            </group>
+                        </group>
+                    </group>
+                    <group string='消息'>
+                        <field name='message' nolabel='1' placeholder="写入你要在定义期间时显示的信息..."/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

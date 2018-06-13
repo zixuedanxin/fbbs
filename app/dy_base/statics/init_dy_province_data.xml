@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: init_dy_privnce_data 
+# author: tangdayi
+# data: 2318年03月31日 22时40分
+# ===================================================
+-->
+<odoo>
+    <data noupdate="1">
+
+        <!-- 添加省份数据 -->
+        <record id="province_BJ" model="dy.province">
+            <field name="name">北京市</field>
+            <field name="simple_name">京</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE01</field>
+        </record>
+        <record id="province_SH" model="dy.province">
+            <field name="name">上海市</field>
+            <field name="simple_name">沪</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE02</field>
+        </record>
+        <record id="province_ZJ" model="dy.province">
+            <field name="name">浙江省</field>
+            <field name="simple_name">浙</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE03</field>
+        </record>
+        <record id="province_TJ" model="dy.province">
+            <field name="name">天津市</field>
+            <field name="simple_name">津</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE04</field>
+        </record>
+        <record id="province_AH" model="dy.province">
+            <field name="name">安徽省</field>
+            <field name="simple_name">皖</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE05</field>
+        </record>
+        <record id="province_FJ" model="dy.province">
+            <field name="name">福建省</field>
+            <field name="simple_name">闽</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE06</field>
+        </record>
+        <record id="province_CQ" model="dy.province">
+            <field name="name">重庆市</field>
+            <field name="simple_name">渝</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE07</field>
+        </record>
+        <record id="province_JX" model="dy.province">
+            <field name="name">江西省</field>
+            <field name="simple_name">赣</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE08</field>
+        </record>
+        <record id="province_SD" model="dy.province">
+            <field name="name">山东省</field>
+            <field name="simple_name">鲁</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE09</field>
+        </record>
+        <record id="province_HA" model="dy.province">
+            <field name="name">河南省</field>
+            <field name="simple_name">豫</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE10</field>
+        </record>
+        <record id="province_NM" model="dy.province">
+            <field name="name">内蒙古自治区</field>
+            <field name="simple_name">蒙</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE31</field>
+        </record>
+        <record id="province_HB" model="dy.province">
+            <field name="name">湖北省</field>
+            <field name="simple_name">鄂</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE12</field>
+        </record>
+        <record id="province_XJ" model="dy.province">
+            <field name="name">新疆维吾尔自治区</field>
+            <field name="simple_name">新</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE13</field>
+        </record>
+        <record id="province_HN" model="dy.province">
+            <field name="name">湖南省</field>
+            <field name="simple_name">湘</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE14</field>
+        </record>
+        <record id="province_NX" model="dy.province">
+            <field name="name">宁夏回族自治区</field>
+            <field name="simple_name">宁</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE15</field>
+        </record>
+        <record id="province_GD" model="dy.province">
+            <field name="name">广东省</field>
+            <field name="simple_name">粤</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE16</field>
+        </record>
+        <record id="province_XZ" model="dy.province">
+            <field name="name">西藏自治区</field>
+            <field name="simple_name">藏</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE17</field>
+        </record>
+        <record id="province_HI" model="dy.province">
+            <field name="name">海南省</field>
+            <field name="simple_name">琼</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE18</field>
+        </record>
+        <record id="province_GX" model="dy.province">
+            <field name="name">广西壮族自治区</field>
+            <field name="simple_name">桂</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE19</field>
+        </record>
+        <record id="province_SC" model="dy.province">
+            <field name="name">四川省</field>
+            <field name="simple_name">蜀</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE20</field>
+        </record>
+        <record id="province_HE" model="dy.province">
+            <field name="name">河北省</field>
+            <field name="simple_name">冀</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE31</field>
+        </record>
+        <record id="province_GZ" model="dy.province">
+            <field name="name">贵州省</field>
+            <field name="simple_name">黔</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE22</field>
+        </record>
+        <record id="province_SX" model="dy.province">
+            <field name="name">山西省</field>
+            <field name="simple_name">晋</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE23</field>
+        </record>
+        <record id="province_YN" model="dy.province">
+            <field name="name">云南省</field>
+            <field name="simple_name">滇</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE24</field>
+        </record>
+        <record id="province_LN" model="dy.province">
+            <field name="name">辽宁省</field>
+            <field name="simple_name">辽</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE25</field>
+        </record>
+        <record id="province_SN" model="dy.province">
+            <field name="name">陕西省</field>
+            <field name="simple_name">陕</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE26</field>
+        </record>
+        <record id="province_JL" model="dy.province">
+            <field name="name">吉林省</field>
+            <field name="simple_name">吉</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE27</field>
+        </record>
+        <record id="province_GS" model="dy.province">
+            <field name="name">甘肃省</field>
+            <field name="simple_name">甘</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE28</field>
+        </record>
+        <record id="province_HL" model="dy.province">
+            <field name="name">黑龙江省</field>
+            <field name="simple_name">黑</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE29</field>
+        </record>
+        <record id="province_QH" model="dy.province">
+            <field name="name">青海省</field>
+            <field name="simple_name">青</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE30</field>
+        </record>
+        <record id="province_JS" model="dy.province">
+            <field name="name">江苏省</field>
+            <field name="simple_name">苏</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE31</field>
+        </record>
+
+        <record id="province_TW" model="dy.province">
+            <field name="name">台湾省</field>
+            <field name="simple_name">台</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE31</field>
+        </record>
+        <record id="province_HK" model="dy.province">
+            <field name="name">香港特别行政区</field>
+            <field name="simple_name">港</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE32</field>
+        </record>
+        <record id="province_MO" model="dy.province">
+            <field name="name">澳门特别行政区</field>
+            <field name="simple_name">澳</field>
+            <field name="country_id" ref="base.cn"/>
+            <field name="">PROVINCE33</field>
+        </record>
+
+
+    </data>
+</odoo>

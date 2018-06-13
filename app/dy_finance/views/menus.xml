@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: menus 
+# author: tangdayi
+# data: 2018年05月23日 21时45分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <menuitem id='menu_root_dy_accountant'
+                  name='会计'
+                  sequence="107"/>
+
+        <menuitem id='menu_dy_accountant_data_setting'
+                  parent="menu_root_dy_accountant"
+                  name='数据配置'
+                  sequence="10"/>
+
+        <menuitem id='menu_dy_accountant_account_setting'
+                  parent="menu_dy_accountant_data_setting"
+                  name='会计科目配置'
+                  action="dy_accountant_setting_action"
+                  sequence="10"/>
+
+    </data>
+</odoo>

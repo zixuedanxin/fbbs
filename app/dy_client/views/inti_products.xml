@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: inti_products 
+# author: tangdayi
+# data: 2018年05月26日 22时14分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <!--  产品  -->
+        <record id="product_01" model="product.product">
+            <field name="name">菜油爆土鸡饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1001</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_01.png"/>
+        </record>
+
+        <record id="product_02" model="product.product">
+            <field name="name">冬菇滑鸡套餐(菜干汤)</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1002</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_02.png"/>
+        </record>
+
+        <record id="product_03" model="product.product">
+            <field name="name">红烧排骨套餐(菜干汤)</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1003</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_03.png"/>
+        </record>
+
+        <record id="product_04" model="product.product">
+            <field name="name">鸡柳+培根+韩式泡菜+烤肠</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售: 鸡柳+培根+韩式泡菜+烤肠</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1004</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_04.png"/>
+        </record>
+
+        <record id="product_05" model="product.product">
+            <field name="name">巨无霸</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售: 牛柳+鸡排+培根+虾+叉烧+烤肠</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1005</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_05.png"/>
+        </record>
+
+        <record id="product_06" model="product.product">
+            <field name="name">榄菜肉松套餐</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1006</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_06.png"/>
+        </record>
+
+
+        <record id="product_07" model="product.product">
+            <field name="name">老干妈火腿炒饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1007</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_07.png"/>
+        </record>
+
+        <record id="product_08" model="product.product">
+            <field name="name">蜜汁叉烧饭拼菜干猪肺汤</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1008</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_08.png"/>
+        </record>
+
+
+        <record id="product_09" model="product.product">
+            <field name="name">泡椒牛肉粒炒饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1009</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_09.png"/>
+        </record>
+
+        <record id="product_10" model="product.product">
+            <field name="name">肉饼饭拼乌鸡汤+青菜+卤蛋</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1010</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_10.png"/>
+        </record>
+
+        <record id="product_11" model="product.product">
+            <field name="name">三杯鸡套餐</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">12</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1011</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_11.png"/>
+        </record>
+
+
+        <record id="product_12" model="product.product">
+            <field name="name">豉汁蒸鲩鱼套餐</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1012</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_12.png"/>
+        </record>
+
+
+        <record id="product_13" model="product.product">
+            <field name="name">酸菜卤肉套餐</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1013</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_13.png"/>
+        </record>
+
+        <record id="product_14" model="product.product">
+            <field name="name">酸甜鱼香肉丝饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1014</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_14.png"/>
+        </record>
+
+        <record id="product_15" model="product.product">
+            <field name="name">蒜香牛肉饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1015</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_15.png"/>
+        </record>
+
+        <record id="product_16" model="product.product">
+            <field name="name">套餐酸萝卜鸡杂饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1016</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_16.png"/>
+        </record>
+
+        <record id="product_17" model="product.product">
+            <field name="name">铁板鸡扒套餐</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1017</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_17.png"/>
+        </record>
+
+        <record id="product_18" model="product.product">
+            <field name="name">咸鱼茄子套餐</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1018</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_18.png"/>
+        </record>
+
+
+        <record id="product_19" model="product.product">
+            <field name="name">香脆鸡腿卤肉饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1019</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_19.png"/>
+        </record>
+
+
+        <record id="product_20" model="product.product">
+            <field name="name">香辣喷火毛血旺饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1020</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_20.png"/>
+        </record>
+
+
+        <record id="product_21" model="product.product">
+            <field name="name">香麻爽口藤椒鱼饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">18</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1021</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_21.png"/>
+        </record>
+
+
+        <record id="product_22" model="product.product">
+            <field name="name">香喷喷水煮牛肉饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1022</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_22.png"/>
+        </record>
+
+
+        <record id="product_23" model="product.product">
+            <field name="name">印度咖喱鸡肉饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1023</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_23.png"/>
+        </record>
+
+
+        <record id="product_24" model="product.product">
+            <field name="name">云溪清水啤酒鸭饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1024</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_24.png"/>
+        </record>
+
+        <record id="product_25" model="product.product">
+            <field name="name">臻品排骨拼凉瓜炒蛋饭</field>
+            <field name="categ_id" ref="fbb_product_category_01"/>
+            <field name="standard_price">10</field>
+            <field name="list_price">15</field>
+            <field name="type">service</field>
+            <field name="uom_id" ref="product_uom_fen"/>
+            <field name="uom_po_id" ref="product_uom_fen"/>
+            <field name="description">FBB 产品销售</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id"></field>
+            <field name="supplier_taxes_id"></field>
+            <field name="default_code">1025</field>
+            <field name="sale_line_warn">no-message</field>
+            <field name="image" type="base64" file="dy_client/static/img/product/product_25.png"/>
+        </record>
+
+
+    </data>
+</odoo>

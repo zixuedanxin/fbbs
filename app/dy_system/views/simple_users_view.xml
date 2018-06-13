@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: res_users_view 
+# author: tangdayi
+# data: 2018年03月19日 20时42分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <record id="view_dy_base_users_simple_form" model="ir.ui.view">
+            <field name="name">用户管理</field>
+            <field name="model">res.users</field>
+            <field name="priority">3</field>
+            <field name="arch" type="xml">
+                <form string="用户">
+                    <sheet>
+
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
+                                <field name="active" widget="boolean_button" options='{"terminology": "active"}'/>
+                            </button>
+                        </div>
+                        <br/><br/>
+                        <field name="id" invisible="1"/>
+                        <div class="oe_form_box_info oe_text_center" style="margin-bottom: 10px;margin-top: 10px;"
+                             attrs="{'invisible': [('id', '>', 0)]}">
+                            新建用户：用户名，密码，手机，所属公司必须填写。
+                        </div>
+                        <field name="image" widget='image' class="oe_avatar oe_left"
+                               options='{"preview_image": "image_medium"}'/>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" string="姓名" required="True"/>
+                            </h1>
+
+                            <label for="login" class="oe_edit_only" string="账号"/>
+                            <h2>
+                                <field name="login" placeholder="手机号码：18688888888"/>
+                            </h2>
+
+                            <label for="password" class="oe_edit_only" string="密码"
+                                   attrs="{'invisible': [('id', '>', 0)]}"/>
+                            <h2>
+                                <field name="password" required="False" password="True"
+                                       attrs="{'invisible': [('id', '>', 0)]}"/>
+                            </h2>
+
+                            <label for="company_id" string="所属公司" class="oe_edit_only">所属公司</label>
+                            <h2>
+                                <field string="所属公司" name="company_id" context="{'user_preference': 0}"
+                                   options='{"no_open": 1, "no_create": 1, "no_create_edit": 1}'/>
+                            </h2>
+                        </div>
+                        <group>
+                            <field name="email"/>
+                            <field name="mobile" widget="phone" required="True"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="active"/>
+                        </group>
+
+                        <notebook colspan="4">
+                            <page name="access_rights" string="访问与权限">
+                                <group string="多公司" attrs="{'invisible': [('companies_count', '&lt;=', 1)]}">
+                                    <field string="组织范围" name="company_ids" widget="many2many_tags" options='{"no_create": 1, "no_create_edit": 1}'/>
+                                    <field string="组织数量" name="companies_count" invisible="1"/>
+                                </group>
+                                <group>
+                                    <field name="department_id" options='{"no_create": 1, "no_create_edit": 1}'/>
+                                    <field name="restaurant_ids" widget="many2many_tags" options='{"no_create": 1, "no_create_edit": 1}'/>
+                                </group>
+                                <field name="groups_id" string="所属角色" widget="many2many_tags"  options='{"no_create": 1, "no_create_edit": 1}'/>
+                            </page>
+                            <page string="首选项">
+                                <group>
+                                    <group string="定位" name="preferences">
+                                        <field name="lang"/>
+                                        <field name="tz" widget="timezone_mismatch" options="{'tz_offset_field': 'tz_offset'}" />
+                                        <field name="tz_offset" invisible="1"/>
+                                    </group>
+                                    <group string="菜单制定" groups="base.group_no_one">
+                                        <field name="action_id"/>
+                                    </group>
+                                </group>
+                                <group string="消息与社交" name="messaging">
+                                    <field name="signature"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_dy_base_users_tree" model="ir.ui.view">
+            <field name="name">ws.sys.res.users.tree</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                <tree string="Users">
+                    <field name="company_id" string="所属组织"/>
+                    <field name="login" string="账号"/>
+                    <field name="name" string="姓名"/>
+                    <field name="mobile" string="手机"/>
+                    <field name="login_date" string="最后登录时间"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_dy_base_users_search" model="ir.ui.view">
+            <field name="name">ws.sys.res.users.search</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                <search string="Users">
+                    <field name="name"
+                           filter_domain="['|', '|', ('name','ilike',self), ('login','ilike',self), ('email','ilike',self)]"
+                           string="用户"/>
+                    <field name="company_ids" string="公司组" groups="base.group_multi_company"/>
+                    <field name="share"/>
+                    <filter name="company_id" string="公司"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_dy_base_res_users" model="ir.actions.act_window">
+            <field name="name">用户与权限管理</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.users</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_company_id': 1}</field>
+            <field name="view_id" ref="view_dy_base_users_tree"/>
+            <field name="search_view_id" ref="view_dy_base_users_search"/>
+            <field name="help">用户与权限管理</field>
+        </record>
+
+        <record id="action_dy_base_res_users_view1" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_dy_base_users_tree"/>
+            <field name="act_window_id" ref="action_dy_base_res_users"/>
+        </record>
+
+        <record id="action_dy_base_res_users_view2" model="ir.actions.act_window.view">
+            <field eval="20" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_dy_base_users_simple_form"/>
+            <field name="act_window_id" ref="action_dy_base_res_users"/>
+        </record>
+
+    </data>
+</odoo>

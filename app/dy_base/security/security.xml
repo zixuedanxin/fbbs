@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: security 
+# author: tangdayi
+# data: 2018年03月23日 19时22分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_system_category">
+            <field name="name">系统管理</field>
+            <field name="description">系统控制权限</field>
+            <field name="sequence">17</field>
+        </record>
+        <record id="group_system_user" model="res.groups">
+            <field name="name">普通用户</field>
+            <field name="category_id" ref="module_system_category"/>
+        </record>
+        <record id="group_system_manager" model="res.groups">
+            <field name="name">管理员</field>
+            <field name="implied_ids" eval="[(4, ref('group_system_user'))]"/>
+            <field name="category_id" ref="module_system_category"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+    </data>
+</odoo>

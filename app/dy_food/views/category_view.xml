@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: category 
+# author: tangdayi
+# data: 2018年03月15日 22时04分
+# ===================================================
+-->
+<odoo>
+    <data>
+
+        <!--Action for Product categories-->
+        <record id="lunch_product_category_action" model="ir.actions.act_window">
+            <field name="name">食物类别</field>
+            <field name="res_model">lunch.product.category</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                点击这里，创建食物分类
+            </p>
+              <p>
+                这里你可以访问所有的午餐产品的种类。
+              </p>
+            </field>
+        </record>
+
+        <record id="lunch_product_category_view_form" model="ir.ui.view">
+            <field name="name">分类</field>
+            <field name="model">lunch.product.category</field>
+            <field name="arch" type="xml">
+                <form string="食物类别">
+                    <group>
+                        <field name='name' string="食物类别"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

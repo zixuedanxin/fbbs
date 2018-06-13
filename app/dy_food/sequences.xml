@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: alert_view
+# author: tangdayi
+# data: 2018年03月15日 21时47分
+# ===================================================
+-->
+<odoo>
+    <data>
+
+        <record id="seq_dy_subsidy_type" model="ir.sequence">
+            <field name="name">补贴类型编码</field>
+            <field name="code">dy.subsidy.type</field>
+            <field name="prefix">BTLX%(year)s%(month)s%(day)s</field>
+            <field name="padding">4</field>
+            <field name="company_id"/>
+        </record>
+
+        <record id="seq_dy_subsidy_model" model="ir.sequence">
+            <field name="name">补贴模式编码</field>
+            <field name="code">dy.subsidy.model</field>
+            <field name="prefix">BTMS%(year)s%(month)s%(day)s</field>
+            <field name="padding">4</field>
+            <field name="company_id"/>
+        </record>
+
+        <record id="seq_dy_subsidy_order" model="ir.sequence">
+            <field name="name">补贴单编码</field>
+            <field name="code">dy.subsidy.order</field>
+            <field name="prefix">BTD%(year)s%(month)s%(day)s</field>
+            <field name="padding">4</field>
+            <field name="company_id"/>
+        </record>
+
+        <record id="seq_dy_subsidy_account" model="ir.sequence">
+            <field name="name">补贴账户编码</field>
+            <field name="code">dy.subsidy.account</field>
+            <field name="prefix">BTZH%(year)s%(month)s%(day)s</field>
+            <field name="padding">4</field>
+            <field name="company_id"/>
+        </record>
+
+    </data>
+</odoo>

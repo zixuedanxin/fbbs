@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: alert_view
+# author: tangdayi
+# data: 2018年03月15日 21时47分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <record id="seq_dy_feedback" model="ir.sequence">
+            <field name="name">用户反馈</field>
+            <field name="code">dy.feedback</field>
+            <field name="prefix">YHFK%(year)s%(month)s%(day)s</field>
+            <field name="padding">5</field>
+        </record>
+
+    </data>
+</odoo>

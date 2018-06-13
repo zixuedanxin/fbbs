@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <div t-name="LunchPreviousOrdersWidgetNoOrder" class="col-md-12">
+        <h3>这是你第一次订购食品</h3>
+        <p class="text-muted">选择一个产品并且把订单注释写在备注中。</p>
+        <p class="text-muted">你食物收藏夹基于最后一次订单创建。</p>
+        <p class="text-muted">不要忘记红色区域显示的提示信息。</p>
+    </div>
+    <t t-name="LunchPreviousOrdersWidgetList">
+        <div t-foreach="categories" t-as="supplier" class="col-md-4">
+            <h3><t t-esc="supplier"/></h3>
+            <div t-foreach='categories[supplier]' t-as='order' class="o_lunch_vignette">
+                <button type="button" class="pull-right o_add_button oe_edit_only oe_link" t-att-data-id="order.line_id">
+                    <span class="fa fa-plus-square"></span>
+                    <span>Add</span>
+                </button>
+                <div>
+                    <t t-esc="order.product_name"/>
+                    <span class="badge pull-right">
+                        <span class="o_lunch_price" t-raw="formatValue(order)"/>
+                    </span>
+                </div>
+                <div class="text-muted">
+                    <t t-if="order.note != false" t-esc="order.note"/>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

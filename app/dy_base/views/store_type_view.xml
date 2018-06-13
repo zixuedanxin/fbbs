@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: store_type_view 
+# author: tangdayi
+# data: 2018年03月19日 21时38分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <record id="dy_store_type_view_tree" model="ir.ui.view">
+            <field name="name">餐厅类型</field>
+            <field name="model">dy.store.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="number"/>
+                    <field name="name"/>
+                    <field name='create_date' widget='float_time'/>
+                    <field name="remark"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="dy_store_type_view_form" model="ir.ui.view">
+            <field name="name">dy.store.type.form</field>
+            <field name="model">dy.store.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4">
+                        <field name="number"/>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="remark"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="base_dy_store_type_action" model="ir.actions.act_window">
+            <field name="name">餐厅</field>
+            <field name="res_model">dy.store.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="dy_store_type_view_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                点击此处建立一个用餐厅类别。
+            </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

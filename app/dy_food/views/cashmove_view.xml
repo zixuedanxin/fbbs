@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: cashmove_view 
+# author: tangdayi
+# data: 2018年03月15日 21时40分
+# ===================================================
+-->
+<odoo>
+    <data>
+
+        <!--View Search to group by employee and input/output (cashmoves)-->
+        <record id="lunch_cashmove_view_search" model="ir.ui.view">
+            <field name='name'>lunch.cashmove.search</field>
+            <field name='model'>lunch.cashmove</field>
+            <field name='arch' type='xml'>
+                <search string="员工付款">
+                    <field name="description"/>
+                    <field name="user_id"/>
+                    <filter name='is_payment' string="付款" domain="[('state','=','payment')]"/>
+                    <separator/>
+                    <filter name='is_mine_group' string="我的账户已分组" domain="[('user_id','=',uid)]" context="{'group_by':'user_id'}"/>
+                    <filter name="group_by_user" string="用户" context="{'group_by':'user_id'}"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="lunch_cashmove_view_search_2" model="ir.ui.view">
+            <field name='name'>lunch.cashmove.search</field>
+            <field name='model'>lunch.cashmove</field>
+            <field name='arch' type='xml'>
+                <search string="现金转移">
+                    <field name="description"/>
+                    <field name="user_id"/>
+                    <group expand="0" string="分组">
+                        <filter name='group_by_user' string="按员工" context="{'group_by':'user_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+
+
+        <!--view for cashmove-->
+        <record id="lunch_cashmove_view_tree" model="ir.ui.view">
+            <field name="name">lunch.cashmove.tree</field>
+            <field name="model">lunch.cashmove</field>
+            <field name="arch" type="xml">
+                <tree string="cashmove tree">
+                    <field name="date"/>
+                    <field name="user_id"/>
+                    <field name="description"/>
+                    <field name="amount" sum="Total"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_lunch_cashmove_kanban" model="ir.ui.view">
+            <field name="name">lunch.cashmove.kanban</field>
+            <field name="model">lunch.cashmove</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="date"/>
+                    <field name="user_id"/>
+                    <field name="description"/>
+                    <field name="amount"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="row mb4">
+                                    <div class="col-xs-8">
+                                        <span>
+                                            <strong class="o_kanban_record_title"><t t-esc="record.description.value"/></strong>
+                                        </span>
+                                    </div>
+                                    <div class="col-xs-4 text-right">
+                                        <span class="badge">
+                                            <strong><i class="fa fa-money"/> <field name="amount"/></strong>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <i class="fa fa-clock-o"/>
+                                        <t t-esc="record.date.value"/>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <img t-att-src="kanban_image('res.users', 'image_small', record.user_id.raw_value)" t-att-title="record.user_id.value" width="24" height="24" class="oe_kanban_avatar pull-right"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="lunch_cashmove_view_form" model="ir.ui.view">
+            <field name="name">lunch.cashmove.form</field>
+            <field name="model">lunch.cashmove</field>
+            <field name="arch" type="xml">
+                <form string="现金转移表单">
+                    <sheet>
+                        <group>
+                            <field name="user_id" required="1"/>
+                            <field name="date"/>
+                            <field name="amount"/>
+                        </group>
+                        <label for='description'/>
+                        <field name="description"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+        <record id="lunch_cashmove_view_tree_2" model="ir.ui.view">
+            <field name="name">lunch.cashmove.tree</field>
+            <field name="model">lunch.cashmove</field>
+            <field name="arch" type="xml">
+                <tree string="cashmove tree" create='false'>
+                    <field name="date"/>
+                    <field name="description"/>
+                    <field name="amount" sum="Total"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--Action for Lunch cashmoves-->
+        <record id="lunch_cashmove_action_account" model="ir.actions.act_window">
+            <field name="name">我的帐户</field>
+            <field name="res_model">lunch.cashmove</field>
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="lunch_cashmove_view_search"/>
+            <field name="context">{"search_default_is_mine_group":1}</field>
+            <field name="view_id" ref="lunch_cashmove_view_tree_2"/>
+            <field name="help" type="html">
+              <p>
+                此处你可以看见现金转移。<br/>现金转移可以为费用或付款。
+                费用在收到订单时自动创建，而付款则由管理员编制为公司报销。
+              </p>
+            </field>
+        </record>
+
+
+        <!--Action for Control Accounts-->
+        <record id="lunch_cashmove_action_control_accounts" model="ir.actions.act_window">
+            <field name="name">账户管理</field>
+            <field name="res_model">lunch.cashmove</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="search_view_id" ref="lunch_cashmove_view_search_2"/>
+            <field name="context">{"search_default_group_by_user":1}</field>
+            <field name="view_id" ref="lunch_cashmove_view_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                点击建立一个新的付款。
+            </p>
+              <p>
+                  现金转移可以是费用或付款。<br/>
+                  费用在收到订单时自动创建。<br/>
+                  付款代表公司给员工报销。
+              </p>
+            </field>
+        </record>
+
+        <!--Action for Payment cashmove-->
+        <record id="lunch_cashmove_action_payment" model="ir.actions.act_window">
+            <field name="name">登记现金转移</field>
+            <field name="res_model">lunch.cashmove</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="search_view_id" ref="lunch_cashmove_view_search"/>
+            <field name="context">{"search_default_is_payment":1}</field>
+            <field name="view_id" ref="lunch_cashmove_view_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                点击建立一个新的付款。
+            </p>
+              <p>
+                这里你可以看到所有员工的付款。付款是一个从员工到公司的现金划转。
+              </p>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

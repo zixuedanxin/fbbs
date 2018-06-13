@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFood
+# file_name: menus
+# author: tangdayi
+# data: 2018年01月16日 14时07分
+# ===================================================
+-->
+<openerp>
+    <data>
+
+        <template id="ff_oe_footer" inherit_id="web.menu_secondary" name="footer">
+            <xpath expr="//div[@class='o_sub_menu_footer']" position="replace">
+               <div class="o_sub_menu_footer">
+                Powered by <a href="http://www.fbb.com.cn" target="_blank"><span>FBB</span></a>
+            </div>
+            </xpath>
+        </template>
+
+
+    </data>
+</openerp>

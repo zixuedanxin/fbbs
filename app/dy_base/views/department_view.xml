@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: department_view 
+# author: tangdayi
+# data: 2018年03月20日 22时31分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_base_dy_department_tree">
+            <field name="name">部门</field>
+            <field name="model">dy.department</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="number"/>
+                    <field name="name"/>
+                    <field name="leader_id"/>
+                    <field name="company_id"/>
+                    <field name="remark"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_base_dy_department_form">
+            <field name="name">dy.department_form</field>
+            <field name="model">dy.department</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="number"/>
+                            <field name="leader_id" options="{'no_create_edit': 1, 'no_open': 1, 'no_create': 1}"/>
+                            <field name="company_id" options="{'no_create_edit': 1, 'no_open': 1, 'no_create': 1}"/>
+                        </group>
+                        <group>
+                            <field name="remark"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--过滤-->
+        <record id="view_base_dy_department_filter" model="ir.ui.view">
+            <field name="name">dy.department_filter</field>
+            <field name="model">dy.department</field>
+            <field name="arch" type="xml">
+                <search string="搜索">
+                    <separator/>
+                    <filter string="公司" name="company_id"/>
+                    <group expand="0" name="group_by" string="Group By">
+                       <filter string="公司" context="{'group_by': 'company_id'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
+
+        <record id="action_base_dy_department" model="ir.actions.act_window">
+            <field name="name">部门</field>
+            <field name="res_model">dy.department</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_company_id': 1}</field>
+            <field name="view_id" ref="view_base_dy_department_tree"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                点击这里创建部门。
+              </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

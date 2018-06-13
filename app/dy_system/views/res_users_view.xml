@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: res_users_view 
+# author: tangdayi
+# data: 2018年03月20日 22时44分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <record id="view_dy_system_users_form" model="ir.ui.view">
+            <field name="name">res.users.form.department.user</field>
+            <field name="model">res.users</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="restaurant_ids" string="餐厅门店" widget="many2many_tags"/>
+                    <field name="department_id" string="部门"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

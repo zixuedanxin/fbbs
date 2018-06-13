@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+
+{
+    'name': 'FBB DYFOOD',
+    'sequence': 4,
+    'version': '1.0',
+    'author': 'YiDaTang',
+    'depends': ['dy_base'],
+    'category': '餐饮管理',
+    'summary': '餐饮',
+    'description': """ FBB """,
+    'data': [
+        'security/lunch_security.xml',
+        'security/ir.model.access.csv',
+        'report/lunch_order_views.xml',
+        'report/lunch_order_templates.xml',
+        'views/lunch_templates.xml',
+        'wizard/lucky_order_view.xml',
+        'views/cashmove_view.xml',
+        'views/lunch_views.xml',
+        'views/alert_view.xml',
+        'views/product_view.xml',
+        'views/category_view.xml',
+        'views/subsidy_type_view.xml',
+        'views/subsidy_model_view.xml',
+        'views/subsidy_order_view.xml',
+        'views/subsidy_account_view.xml',
+        'sequences.xml',
+        'menus.xml',
+    ],
+    'demo': ['data/lunch_demo.xml'],
+    'qweb': ['static/src/xml/lunch.xml', ],
+    'installable': True,
+    'application': True,
+
+}

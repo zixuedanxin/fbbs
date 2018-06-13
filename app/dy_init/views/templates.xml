@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# ===================================================
+# projectname: FBBFood
+# file_name: menus
+# author: tangdayi
+# data: 2018年01月16日 14时07分
+# ===================================================
+-->
+<openerp>
+    <data>
+
+        <template id="layout" inherit_id="web.layout" name="Web layout">
+            <xpath expr="//title[1]" position="replace">
+                <title>饭班帮</title>
+            </xpath>
+
+            <xpath expr="//link[@href=x_icon or '/web/static/src/img/favicon.ico']" position="replace">
+                <link rel="shortcut icon" href="/dy_init/static/img/favicon.ico" type="image/x-icon"/>
+            </xpath>
+
+        </template>
+
+
+        <!--<template id="web_login_layout" inherit_id="web.login_layout" name="LoginLayoutFBB">-->
+            <!--<xpath expr="//a[@href='/web/database/manager']" position="replace">-->
+            <!--</xpath>-->
+            <!--<xpath expr="//a[@href='https://www.odoo.com']" position="replace">-->
+                <!--<a style="margin-left:5px;float:right;" href="http://www.fbb.com" target="_blank">版权授予 饭帮班</a>-->
+            <!--</xpath>-->
+        <!--</template>-->
+
+
+         <!--&lt;!&ndash; 登录后，左下解菜单导航栏底部的Logo &ndash;&gt;-->
+        <!--<template id="menu_secondary_custom" inherit_id="web.menu_secondary">-->
+            <!--<xpath expr="//div[@class='o_sub_menu_footer']" position="replace">-->
+                <!--<div class="o_sub_menu_footer">-->
+                    <!--Powered by <span style="color:#ff0000;"><a href="https://www.xy.com" target="_blank"><span>版权授予 饭帮班</span></a></span>-->
+                <!--</div>-->
+            <!--</xpath>-->
+        <!--</template>-->
+
+        <!--&lt;!&ndash; 登录页面下方的Logo &ndash;&gt;-->
+        <!--<template id="login_layout_custom" inherit_id="web.login_layout">-->
+            <!--<xpath expr="//a[@href='https://www.odoo.com']" position="replace">-->
+                <!--<span style="color:#ff0000;"><a href="https://www.xy.com" target="_blank">Powered by <span>版权授予 饭帮班</span></a></span>-->
+            <!--</xpath>-->
+        <!--</template>-->
+
+
+
+        <template id="web.login_dy" name="Login dy" inherit_id="web.login">
+            <xpath expr="//label[@for='login']" position="replace">
+                <label for="login" class="control-label">用户</label>
+            </xpath>
+            <xpath expr="//label[@for='password']" position="replace">
+                <label for="password" class="control-label">密码</label>
+            </xpath>
+            <xpath expr="//div[@class='clearfix oe_login_buttons']" position="replace">
+                <div class="clearfix oe_login_buttons">
+                    <button type="submit" class="btn btn-primary">登录</button>
+                </div>
+            </xpath>
+        </template>
+
+        <!--framework patch-->
+        <!--<template id="web.assets_backend_dy" name="assets_backend dy" inherit_id="web.assets_backend">-->
+            <!--<xpath expr="//script[@src='/web/static/src/js/framework/misc.js']" position="replace">-->
+                <!--<script type="text/javascript" src="/dy_init/static/src/js/dy_misc.js"></script>-->
+            <!--</xpath>-->
+        <!--</template>-->
+        <!--title suffix-->
+        <!--<template id="web.webclient_script_dy" name="web.webclient_script dy" inherit_id="web.webclient_script">-->
+            <!--<xpath expr="//script" position="replace">-->
+                <!--<script type="text/javascript">-->
+                    <!--odoo.define('web.web_client', function (require) {-->
+                    <!--var WebClient = require('web.WebClient');-->
+                    <!--var web_client = new WebClient();-->
+                    <!--$(function() {-->
+                    <!--web_client.set_title_part('zopenerp','FBB');-->
+                    <!--web_client.setElement($(document.body));-->
+                    <!--web_client.start();-->
+                    <!--});-->
+                    <!--return web_client;-->
+                    <!--});-->
+                <!--</script>-->
+            <!--</xpath>-->
+        <!--</template>-->
+
+    </data>
+</openerp>

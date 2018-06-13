@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: init_product_category 
+# author: tangdayi
+# data: 2018年05月26日 22时15分
+# ===================================================
+-->
+<odoo>
+    <data noupdate="1">
+        <!-- 产品分类 -->
+        <record id="fbb_product_category_all" model="product.category">
+            <field name="name">全部</field>
+        </record>
+        <record id="fbb_product_category_saleable" model="product.category">
+            <field name="parent_id" ref="fbb_product_category_all"/>
+            <field name="name">可销售</field>
+        </record>
+
+        <record id="fbb_product_category_01" model="product.category">
+            <field name="parent_id" ref="fbb_product_category_saleable"/>
+            <field name="name">正餐</field>
+        </record>
+
+        <record id="fbb_product_category_02" model="product.category">
+            <field name="parent_id" ref="fbb_product_category_saleable"/>
+            <field name="name">简餐</field>
+        </record>
+
+        <record id="fbb_product_category_01" model="product.category">
+            <field name="parent_id" ref="fbb_product_category_saleable"/>
+            <field name="name">正餐</field>
+        </record>
+
+        <record id="fbb_product_category_02" model="product.category">
+            <field name="parent_id" ref="fbb_product_category_saleable"/>
+            <field name="name">快餐</field>
+        </record>
+
+        <record id="fbb_product_category_03" model="product.category">
+            <field name="parent_id" ref="fbb_product_category_saleable"/>
+            <field name="name">休闲</field>
+        </record>
+
+        <record id="fbb_product_category_04" model="product.category">
+            <field name="parent_id" ref="fbb_product_category_saleable"/>
+            <field name="name">外卖</field>
+        </record>
+
+        <record id="fbb_product_category_05" model="product.category">
+            <field name="parent_id" ref="fbb_product_category_saleable"/>
+            <field name="name">其他</field>
+        </record>
+
+    </data>
+</odoo>

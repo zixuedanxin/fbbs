@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# ===================================================
+# projectname: FBBFood
+# file_name: menus
+# author: tangdayi
+# data: 2018年01月16日 14时07分
+# ===================================================
+-->
+<openerp>
+    <data noupdate="0">
+
+        <record id="dy_init.culture_c1" model="dy.init.culture.category" >
+            <field name="key">1</field>
+            <field name="name">关于企业领导</field>
+        </record>
+
+        <record id="dy_init.culture_l1" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">1</field>
+            <field name="name">对前途有理想、有信心。</field>
+        </record>
+        <record id="dy_init.culture_l2" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">2</field>
+            <field name="name">紧密依靠最近一级的干部，做你想要做的事，了解最近的情况。</field>
+        </record>
+        <record id="dy_init.culture_l3" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">3</field>
+            <field name="name">善于把不同才能、各具特色的人聚集起来，为共同目标而努力、而排除成见。</field>
+        </record>
+        <record id="dy_init.culture_l4" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">4</field>
+            <field name="name">爱憎分明，胸怀坦荡，在足以影响你工作的坏事面前要坚决，但要宽宏大量，非原则问题尽量忍让。善于利用下属长处，克服不利因素。</field>
+        </record>
+        <record id="dy_init.culture_l5" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">5</field>
+            <field name="name">善于透过现象看本质，但不要直揭，不要迁就，最好绕过它，让事实教育对方。</field>
+        </record>
+        <record id="dy_init.culture_l6" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">6</field>
+            <field name="name">消除对抗心理，震动那些麻木不仁及无所谓的消极因素，促进工作，按你的想法去做，最好争取更多拥护你的人。</field>
+        </record>
+        <record id="dy_init.culture_l7" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">7</field>
+            <field name="name">善于了解司令部的意图，促使它实现，做领导的好帮手。</field>
+        </record>
+        <record id="dy_init.culture_l8" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">8</field>
+            <field name="name">掌握语言技术，反对夫子面孔、说教方法，要善于鼓动下属为你的目标作出努力。</field>
+        </record>
+        <record id="dy_init.culture_l9" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">9</field>
+            <field name="name">时时抓关键，切勿实用主义，不拘小节，更不要纠缠于无意义，作用不大的事务或争拗中。</field>
+        </record>
+        <record id="dy_init.culture_l10" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">10</field>
+            <field name="name">规模迅速扩大了，原来小范围的管理方法，已经完全不合时宜，需要大刀阔斧砍掉那些禁锢生产力的东西，包括人、组织形式、各种制度。</field>
+        </record>
+        <record id="dy_init.culture_l11" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">11</field>
+            <field name="name">效益高，但不等于管好了，也不可盲目乐观；相反要管理得更好，以应付困难的到来。</field>
+        </record>
+        <record id="dy_init.culture_l12" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">12</field>
+            <field name="name">规模大了，范围宽了，以前领导直插到底的做法已经不可能了。总部的领导办法，应该是：一、集中精力搞好决策，力求决策准确；二、加强对各头头的指导、接触、监督、支持，确保各部门的正常运转。</field>
+        </record>
+        <record id="dy_init.culture_l13" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">13</field>
+            <field name="name">干部的能力，决定成绩的好坏。因此，要树立好干部的榜样，培养好干部，帮助干部建立威信。事必躬亲是愚蠢的。</field>
+        </record>
+        <record id="dy_init.culture_l14" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">14</field>
+            <field name="name">建立一支强大的领导管理队伍，通过这批管理人员去推动工作是当领导的工作方法。</field>
+        </record>
+        <record id="dy_init.culture_l15" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">15</field>
+            <field name="name">本部门必须有一套组织系统，分级领导，权责分明，一抓到底。</field>
+        </record>
+        <record id="dy_init.culture_l16" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">16</field>
+            <field name="name">各级领导手下必须有3-5人直属一级的人马，这些人马必须与你合心，无对抗情绪，有则转化之或排除之，这班人马又必须基本上能合作，否则转化之或排除另一部分，你的全都目标，由这班人帮你达到。</field>
+        </record>
+        <record id="dy_init.culture_l17" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">17</field>
+            <field name="name">中层干部也必须有下一级的助手（组长）。对这些助手，也像对你的助手一样要求，为你的目标而努力。</field>
+        </record>
+        <record id="dy_init.culture_l18" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">18</field>
+            <field name="name">基于上述道理，你的下属也要建立助手层，要帮助他认识这样做的意义，并很好地利用这一助手层。</field>
+        </record>
+        <record id="dy_init.culture_l19" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">19</field>
+            <field name="name">经理层对基层的主要工作，要列出项目，具体要求；确实掌握每一项目的数字变化，及时作出反应（包括帮助下一级领导解决问题，向上汇报等）。</field>
+        </record>
+        <record id="dy_init.culture_l20" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">20</field>
+            <field name="name">领导要组织核心小组，带动职工，实现生产目标。工作分工要明确，并且经常督促落实（特别是核心人物）；对个别后进者要关心要教育，化消极为积极，切勿成见对人。</field>
+        </record>
+        <record id="dy_init.culture_l21" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">21</field>
+            <field name="name">怎样的领导才算称职？一、善于领会上级意图；二、善于调动部下搞好工作；三、要有两三个好拍档；四、要有全局观点； 五、如实反映情况；六、在战争中学会战争，克服自高、自卑感；七、抓大事，不要过于高傲及小气；八、生活作风正派，不要利用职权谋私利，原则问题要向上级汇报，经济问题要清楚，防止大吃大饮和过份的请客送礼。</field>
+        </record>
+        <record id="dy_init.culture_l22" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">22</field>
+            <field name="name">领导者的任务是：把几个甚至更多的来自不同地方、不同年龄、不同性别，不同处境、不同想法、不同体力、不同知识的人，最大限度地团结起来，互相配合，搞好本单位工作，发挥最大力量，而不是强求一个想法，一个生活模式，不强调平均主义（生活上、工作上）。</field>
+        </record>
+        <record id="dy_init.culture_l23" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">23</field>
+            <field name="name">领导应该明确他是一个组织者，好像下棋一样，你不是车、马、炮。要胜一局棋，你首先对棋局要充分了解，现时的棋局那些对你有利，那些对你不利，你有多少车马炮卒，它们摆在什么地方。你的任务主要是把车马炮调动起来，发挥它们最大作用，从而赢这一局棋。</field>
+        </record>
+        <record id="dy_init.culture_l24" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">24</field>
+            <field name="name">但是车马炮是死物，你的下属像车马炮一样不行，他们是人，  他们有活性。车马炮调到应有的位置上来，不一定如你所希望那样替你完成工作，这就需要及时了解下属公作的情况；产生了如何帮助下属完成工作的问题；帮助下属有两个方面：一是下属的积极性；二是下属的工作方法。主要是前者，而我们单位则后者居多。工作方法有于自己水平问题，最好尊重下属共同探讨，不要轻易下指示，万不要以为自己一定比下属高明。</field>
+        </record>
+        <record id="dy_init.culture_l25" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">25</field>
+            <field name="name">领导是组织下属完成工作任务的指挥官。</field>
+        </record>
+        <record id="dy_init.culture_l26" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">26</field>
+            <field name="name">领导对下属情况必须了如指掌。</field>
+        </record>
+        <record id="dy_init.culture_l27" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">27</field>
+            <field name="name">必须第一时间发现你系统的存在问题。</field>
+        </record>
+        <record id="dy_init.culture_l28" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">28</field>
+            <field name="name">解决问题的方法：一是指示下属解决；二是调动力量帮他解决。</field>
+        </record>
+        <record id="dy_init.culture_l29" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">29</field>
+            <field name="name">对下属工作要求从严，原则关键问题善于督促，也就是对你自己工作从严，善于找出自己工作的弱点。放宽对下属的要求，实际是放松对自己的要求，表扬下属的成绩，实际是表扬自己的成绩，这是不合格领导的通病。</field>
+        </record>
+        <record id="dy_init.culture_l30" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">30</field>
+            <field name="name">人多、物多、场多、专业户多，战线面广，如何治场，这是艺术。</field>
+        </record>
+        <record id="dy_init.culture_l31" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">31</field>
+            <field name="name">成功与失败其实是盈亏问题，是经济问题，收支问题。确保盈利，就是确保胜利。因此，对经济运行的计划、统计措施必须准确及时，了如指掌，每份统一的盈亏报表必须准确及时，对于多方面的运行是否正常，极其重要。一切不能想当然，大概估计甚至搞得怎样就怎样，必须抓到底。</field>
+        </record>
+        <record id="dy_init.culture_l32" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">32</field>
+            <field name="name">善于综合每个员工的工作特点。以获得最大的利益，员工的工作直接影响你的成败。</field>
+        </record>
+        <record id="dy_init.culture_l33" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">33</field>
+            <field name="name">对你的员正要充满信心，要确信他们既有能力，又能取得成果。</field>
+        </record>
+        <record id="dy_init.culture_l34" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">34</field>
+            <field name="name">过于严肃有碍健康，工作也不利。创造乐观和轻松的气氛，用幽默去感染人。</field>
+        </record>
+        <record id="dy_init.culture_l35" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">35</field>
+            <field name="name">避免出现消极的思想及想法。</field>
+        </record>
+        <record id="dy_init.culture_l36" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">36</field>
+            <field name="name">应该为工人提供改进和提高他们各自能力的机会。</field>
+        </record>
+        <record id="dy_init.culture_l37" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">37</field>
+            <field name="name">关心企业的和谐气氛，一旦出现紧张，就要设法使其缓和。</field>
+        </record>
+        <record id="dy_init.culture_l38" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">38</field>
+            <field name="name">了解工人的需要、目标、愿望。</field>
+        </record>
+        <record id="dy_init.culture_l39" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">39</field>
+            <field name="name">对员工的要求要非常敏感，并助其实现目标。</field>
+        </record>
+        <record id="dy_init.culture_l40" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">40</field>
+            <field name="name">既评价别人，也接受别人不同的价值观和生活方式。</field>
+        </record>
+        <record id="dy_init.culture_l41" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">41</field>
+            <field name="name">树立工人的自尊心，互通情报，授权委托责任，分析问题而不是针对人。</field>
+        </record>
+        <record id="dy_init.culture_l42" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">42</field>
+            <field name="name">奖励你认为需要的值得提倡的行为，并用于改变行为的开端。</field>
+        </record>
+        <record id="dy_init.culture_l43" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">43</field>
+            <field name="name">工人有错，必须予以纠正，但千万不可当众批评，伤害感情，使人窘迫。要消除那些一无所获的行动。</field>
+        </record>
+        <record id="dy_init.culture_l44" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">44</field>
+            <field name="name">对一个领导的真正检验，就看他是否有能力把不同才能和各具特色的人聚集起来，为共同的目标而努力。</field>
+        </record>
+        <record id="dy_init.culture_l45" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">45</field>
+            <field name="name">实干家的目标明确，有信心，担风险，但认识产生局限性，把行为约束在可能中。</field>
+        </record>
+        <record id="dy_init.culture_l46" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c1"/>
+            <field name="key">46</field>
+            <field name="name">企业家要敢于进行各种尝试选择，合理地投入人力物力，在新的领域中创新，并使之实现。</field>
+        </record>
+
+
+        <record id="dy_init.culture_c2" model="dy.init.culture.category" >
+            <field name="key">2</field>
+            <field name="name">关于企业经营管理</field>
+        </record>
+
+        <record id="dy_init.culture_l47" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">47</field>
+            <field name="name">实现计划的关键是人。能否强有力地调动各方面人员的积极性是主要一环。处理好场内人际关系，包括领导与被领导，职工与职工，分场与总场之关系，又是调动积极性的决定因素。其次是领导决策的灵活与准确，也直接影响到计划的实现。求大同，存小异，把几十个不同性格，不同处境的人；；团结在一起，为实现共同的目标而努力，把一切可以争取得到的东西都拿到手。</field>
+        </record>
+        <record id="dy_init.culture_l48" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">48</field>
+            <field name="name">创业固然需要充分的财力支持与专业技术，但更重要的是要有一股闯劲。</field>
+        </record>
+        <record id="dy_init.culture_l49" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">49</field>
+            <field name="name">需要建立合理的结构和一整套制度，但这些都应有利于企业的发展，而不能禁锢人们的首创精神。企业从开始发展到成熟阶段，结构及各制度便开始生根，并且像杂草一样，开始扼杀组织的生命力，这就是任何一项制度的危险而顽强的本质。</field>
+        </record>
+        <record id="dy_init.culture_l50" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">50</field>
+            <field name="name">为了新业务的开展，往往必须挣脱现行结构的束缚。要有意识地、主动地、甚至有突破性地去打击公司里各种习惯的不合时宜的做法准则。</field>
+        </record>
+        <record id="dy_init.culture_l51" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">51</field>
+            <field name="name">能否放手去授权给别人，最容易鉴别一个主管的好坏。</field>
+        </record>
+        <record id="dy_init.culture_l52" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">52</field>
+            <field name="name">一个正常的公司最重要的目标是利润，其次就是要努力维持公司的稳定。</field>
+        </record>
+        <record id="dy_init.culture_l53" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">53</field>
+            <field name="name">大企业所耐临的危险是生意做得太大。这和成长太快是企业所遭遇的危险一样。</field>
+        </record>
+        <record id="dy_init.culture_l54" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">54</field>
+            <field name="name">一种有弹性的反应灵活的管理方法：可以保证给公司带来稳定。</field>
+        </record>
+        <record id="dy_init.culture_l55" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">55</field>
+            <field name="name">经营企业时所面临的困难，比创业期间困难得多（包括维持活力、调整工作速度，改变经营方向、作出决策和执行决定）。</field>
+        </record>
+        <record id="dy_init.culture_l56" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">56</field>
+            <field name="name">为使工作顺利进展，需要建立各种结构和制度，因而也开始抑制人们的活力。</field>
+        </record>
+        <record id="dy_init.culture_l57" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">57</field>
+            <field name="name">企业开创头几年，靠激情，靠一种团体精神去完成工作。但扩大以后，无法保持住这种特殊的团体精神和激情，但总能保留部分，那就是建立小型组织，像一排排小型的金字塔。</field>
+        </record>
+        <record id="dy_init.culture_l58" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">58</field>
+            <field name="name">一些能使整个公司保持长期利益的决定，未必是最公平、最受大家欢迎的。</field>
+        </record>
+        <record id="dy_init.culture_l59" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">59</field>
+            <field name="name">弹性作为管理方法，稳定与成就是管理的目的。</field>
+        </record>
+        <record id="dy_init.culture_l60" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">60</field>
+            <field name="name">事业在高速发展，内外因不断发生急剧变化，集团也滚雪球式不断扩大，其凝聚力把各种人聚成一堆，其成份越来越复杂。如何确保在不断扩大中平衡内部稳定机制，使其永远是一个结构最合理的有机体，是一个相当难的题目。否则，会在不断扩大中同时产生越来越多的分裂因素，最终导致分裂，爆炸得粉碎。</field>
+        </record>
+        <record id="dy_init.culture_l61" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">61</field>
+            <field name="name">对一切有害的东西必须坚决清除，对职工干部严要求，以富养廉，以富养高质高效。</field>
+        </record>
+        <record id="dy_init.culture_l62" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">62</field>
+            <field name="name">吃不穷；穿不穷，不团结便穷。</field>
+        </record>
+        <record id="dy_init.culture_l63" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">63</field>
+            <field name="name">问题解决的关键可能是：一、团结，以和为贵，求大同存小异，可忍让则忍让，可迁就的迁就。在团结中求发展，把裂痕缩少到最低限度。二、保持领导集团的团结，最重要的是要使领导者认识到分裂对集团对个人的危害性，从而自觉地维护这一团结，低层的分裂危害性倒不大可怕。三、合情合理的解决各领导者的利益及各种关系，绝不能有硬梆梆地强求一致，我们是人，各有不同的社会关系和个性，什么事情要合理，又要合情。我们之间应该富有人情味而又坚决地维护集团的利益，单讲情不讲理不行，单讲理而不讲情也行不通。</field>
+        </record>
+        <record id="dy_init.culture_l64" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">64</field>
+            <field name="name">由以家庭自愿联办为基础，攒多少得多少，各尽所能，平均分配过渡到以领导核心为基础，团结各种人，有计划地滚雪球式，建成一个初具规模的养鸡基地，再不是平均分配，而是依靠这个比较庞 大的财团，有保障地提高每个人的生活水平，其收入多少，决定干每个人的贡献大小。</field>
+        </record>
+        <record id="dy_init.culture_l65" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">65</field>
+            <field name="name">以信为办事准则，始终是成功的重要因素，任何制度决不能替代信字。</field>
+        </record>
+        <record id="dy_init.culture_l66" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">66</field>
+            <field name="name">在经济上决不容许有半点贪污，决不含糊，这是检验每一个成员的重要依据。</field>
+        </record>
+        <record id="dy_init.culture_l67" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c2"/>
+            <field name="key">67</field>
+            <field name="name">人与人的关系始终是平等互利、合作自愿的关系，但在组织上强调一致性，决不容许各行其事。</field>
+        </record>
+
+        <record id="dy_init.culture_c3" model="dy.init.culture.category" >
+            <field name="key">3</field>
+            <field name="name">关于招聘工作人员</field>
+        </record>
+
+        <record id="dy_init.culture_l68" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">68</field>
+            <field name="name">总方针：用人唯贤，选择最佳工作者。</field>
+        </record>
+        <record id="dy_init.culture_l69" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">69</field>
+            <field name="name">手续：吸收新工作人员必须了解其本人的具体情况，包括年龄、家庭情况、工作经历、文化水平、技术专长、健康情况等，择优选录。</field>
+        </record>
+        <record id="dy_init.culture_l70" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">70</field>
+            <field name="name">吸收人以需要为依据，缺什么人吸收什么人，缺多少吸收多少，不能先吸收入再考虑安排工作。</field>
+        </record>
+        <record id="dy_init.culture_l71" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">71</field>
+            <field name="name">凡可以用日散工、月工，无必要留食留宿的工种，一律不收固定工。</field>
+        </record>
+        <record id="dy_init.culture_l72" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">72</field>
+            <field name="name">日散工、月工要报人事主管批准，由人事主管发工资单。固固定工由人事主管审查，提交董事会批准。</field>
+        </record>
+        <record id="dy_init.culture_l73" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">73</field>
+            <field name="name">职工有夫妻关系的，在不违背第一条原则的情况下可优先考虑，无固定工种的可考虑日散工。</field>
+        </record>
+        <record id="dy_init.culture_l74" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">74</field>
+            <field name="name">主管人事必须秉公办事，特别对自己的亲朋及领导者的亲朋，必须符合总方针及第一条原则，并报请董事会研究批准。</field>
+        </record>
+        <record id="dy_init.culture_l75" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">75</field>
+            <field name="name">日散工、计件工的工资标准由人事主管核定，各部门不得自定。</field>
+        </record>
+        <record id="dy_init.culture_l76" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">76</field>
+            <field name="name">新来职工一般三个月试用期，无特殊技术者，领最低工资，三个月后的工资标准与其他职工同等对待，按劳取酬。</field>
+        </record>
+        <record id="dy_init.culture_l77" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">77</field>
+            <field name="name">遇特殊问题要破格吸收的由董事会研究决定。</field>
+        </record>
+        <record id="dy_init.culture_l78" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">78</field>
+            <field name="name">日散工、临时工、计件工一律不给食宿，如需要，三天内主管批准，三天以上经董事会批准。</field>
+        </record>
+        <record id="dy_init.culture_l79" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c3"/>
+            <field name="key">79</field>
+            <field name="name">高级管理人员，高级科技人员，有重大立功表现者。可优先考虑家属问题。</field>
+        </record>
+
+
+        <record id="dy_init.culture_c4" model="dy.init.culture.category" >
+            <field name="key">4</field>
+            <field name="name">关于对职工的要求</field>
+        </record>
+
+        <record id="dy_init.culture_l80" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c4"/>
+            <field name="key">80</field>
+            <field name="name">踏实做好本职工作，支持领导，主动献策，多学多想，提高工作水平，顾全大局，团结周围同事，不贪污受回扣，不化公为私，不弄虚作假，不隐瞒缺点问题，不自以为是，不搞分裂，不排外就是好职工。</field>
+        </record>
+        <record id="dy_init.culture_l81" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c4"/>
+            <field name="key">81</field>
+            <field name="name">切实尽责，求上进，不安于清闲，明确在场工作的目的，自己救自己，自由竞争，优胜劣败。</field>
+        </record>
+        <record id="dy_init.culture_l82" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c4"/>
+            <field name="key">82</field>
+            <field name="name">人多了，职位、岗位、工资、成绩，很多人会很敏感，总部不可能处理得很恰当，大家理解总部的困难。一句话，龙上天，蛇入地，锥仔袋不长久，有本事自然会有用，总公司不会埋没英才。</field>
+        </record>
+        <record id="dy_init.culture_l83" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c4"/>
+            <field name="key">83</field>
+            <field name="name">个别职工工作不好，希望自觉，不要变成废品，谁也保不了，所谓适者生存，不适者淘汰。</field>
+        </record>
+        <record id="dy_init.culture_l84" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c4"/>
+            <field name="key">84</field>
+            <field name="name">用全部力量共建温氏集团，树立温氏风格成为温氏人，享受温氏巨大的经济效益。</field>
+        </record>
+        <record id="dy_init.culture_l85" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c4"/>
+            <field name="key">85</field>
+            <field name="name">我们的目的是自愿组合，利用财力、技术力、人力、物力、社会威望，有计划搞大生产，提高生产效益，提高收入，根据组合的财力、人力、物力去分配利益，各人取得应有的一份。这里的组合必须符合下列原则：一、有利于团结，不会增加矛盾；二、不会出现取得多，献得少的消极现象；三、有利于增加收入，不会起反作用。</field>
+        </record>
+
+        <record id="dy_init.culture_c5" model="dy.init.culture.category" >
+            <field name="key">5</field>
+            <field name="name">早期形成的部分行为准则</field>
+        </record>
+
+
+        <record id="dy_init.culture_l87" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c5"/>
+            <field name="key">87</field>
+            <field name="name">干部准则：领导有方﹐指挥如意；廉洁奉公﹐忠于职守；有令必行﹐有禁必止；执行决定﹐不打折扣；所辖部门﹐了如指掌；经济目标﹐必定达到；如实反映﹐及时汇报。</field>
+        </record>
+
+
+        <record id="dy_init.culture_c6" model="dy.init.culture.category" >
+            <field name="key">6</field>
+            <field name="name">员工奖惩条例</field>
+        </record>
+
+        <record id="dy_init.culture_l88" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c4"/>
+            <field name="key">88</field>
+            <field name="name">
+                符合以下条件者给予奖励（表扬、记功、晋升、奖金）
+                （1）认真执行公司决定、遵守劳动纪律、完成本职工作，生产成绩特别显著，贡献很大者。
+                （2）关心集体、爱护公物、提出合理化建议，主动协助领导搞好工作者。
+                （3）在特定环境中见义勇为者。
+                （4）敢于揭发坏人坏事者。
+                （5）为公司挽回重大损失者。
+                （6）努力学习专业知识、进步很快者。</field>
+        </record>
+
+        <record id="dy_init.culture_l89" model="dy.init.culture">
+            <field name="category_id" ref="dy_init.culture_c4"/>
+            <field name="key">89</field>
+            <field name="name">
+                有下列行为者给予惩罚（批评、记过、罚款、开除）
+                （1）违反劳动纪律者。
+                （2）出现责任事故、造成损失者。
+                （3）不爱护公物、破坏公物者。
+                （4）挑拨离间、无理取闹、搞分裂者。
+                （5）对坏人坏事知情不报者。
+                （6）见危不救、袖物旁观者。
+                （7）以权谋私、化公为私者。
+                （8）贪污受贿、挪用公款、收取回佣及厚礼者。
+                （9）盗窃、赌博者。
+                （10）对职工、专业户顾客语言、行为粗暴及欺骗者。</field>
+        </record>
+
+
+    </data>
+</openerp>

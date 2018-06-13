@@ -1,0 +1,15 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+manager_dy_company,dy.company,model_dy_company,base.group_user,1,1,1,1
+manager_dy_restaurant,dy.restaurant,model_dy_restaurant,base.group_user,1,1,1,1
+manager_dy_store_type,dy.store.type,model_dy_store_type,base.group_user,1,1,1,1
+manager_dy_department,dy.department,model_dy_department,base.group_user,1,1,1,1
+
+
+manager_dy_province,dy.province,model_dy_province,base.group_user,1,1,1,1
+manager_dy_city,dy.city,model_dy_city,base.group_user,1,1,1,1
+manager_dy_county,dy.county,model_dy_county,base.group_user,1,1,1,1
+manager_dy_town,dy.town,model_dy_town,base.group_user,1,1,1,1
+
+manager_dy_score,dy.score,model_dy_score,base.group_user,1,1,1,1
+
+

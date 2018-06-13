@@ -1,0 +1,30 @@
+<!--
+# ===================================================
+# projectname: FBBFood
+# file_name: menus
+# author: tangdayi
+# data: 2018年01月16日 14时07分
+# ===================================================
+-->
+<odoo>
+    <data>
+
+        <menuitem name="企业文化"
+                  id="menu_dy_init_culture_mgr"
+                  parent="base.menu_administration"
+                  sequence="3"/>
+
+        <menuitem name="内容分类"
+                  id="menu_dy_init_culture_category"
+                  parent="menu_dy_init_culture_mgr"
+                  sequence="10"
+                  action="action_dy_init_culture_category_list"/>
+        
+        <menuitem name="文化箴言"
+                  id="menu_dy_init_culture"
+                  parent="menu_dy_init_culture_mgr"
+                  sequence="20"
+                  action="action_dy_init_culture_list"/>
+        
+    </data>
+</odoo>

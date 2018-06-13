@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# ===================================================
+# projectname: FBBFoods
+# file_name: menus 
+# author: tangdayi
+# data: 2018年03月15日 21时42分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <menuitem id='menu_lunch'
+                  name='餐饮管理'
+                  sequence="105"
+                  groups="group_lunch_user"
+                  web_icon="food,static/description/icon.png"/>
+        <!--
+        <menuitem name="我的餐饮"
+                  parent="menu_lunch"
+                  id="menu_lunch_title"
+                  sequence="50" />
+
+        <menuitem name="订餐" parent="menu_lunch_title"
+                  id="lunch_order_menu_form"
+                  action="lunch_order_action_form"
+                  sequence="1"/>
+
+
+        <menuitem name="我的订单" parent="menu_lunch_title"
+                  id="lunch_order_menu_tree"
+                  action="lunch_order_line_action"
+                  sequence="2"/>
+
+
+        <menuitem name="我的账户"
+                  parent="menu_lunch_title"
+                  id="lunch_cashmove_menu_form"
+                  action="lunch_cashmove_action_account"
+                  sequence="3"/>
+
+
+        <menuitem name="订餐管理"
+                  parent="menu_lunch"
+                  id="menu_lunch_admin"
+                  sequence="51"
+                  groups="group_lunch_manager"/>
+
+        <menuitem name="当日订单" parent="menu_lunch_admin"
+                  id="lunch_order_line_menu_by_supplier"
+                  action="lunch_order_line_action_by_supplier" />
+
+        <menuitem name="供应商管理" parent="menu_lunch_admin"
+                  id="lunch_order_line_menu_control_suppliers"
+                  action="lunch_order_line_action_control_suppliers" />
+
+        <menuitem name="账户管理" parent="menu_lunch_admin"
+                  id="lunch_cashmove_menu_control_accounts"
+                  action="lunch_cashmove_action_control_accounts"/>
+
+        <menuitem name="用户付款" parent="menu_lunch_admin"
+                  id="lunch_cashmove_menu_payment"
+                  action="lunch_cashmove_action_payment"/>
+
+
+
+        <menuitem name="基础配置" parent="menu_lunch"
+                  id="menu_lunch_config"
+                  sequence="53" groups="group_lunch_manager"/>
+
+        <menuitem name="产品"
+                  parent="menu_lunch_config"
+                  id="lunch_product_menu"
+                  action="lunch_product_action"/>
+
+        <menuitem name="分类" parent="menu_lunch_config"
+                  id="lunch_product_category_menu"
+                  action="lunch_product_category_action" />
+
+        <menuitem name="提醒⏰" parent="menu_lunch_config"
+                  id="lunch_alert_menu"
+                  action="lunch_alert_action" />
+                  -->
+
+
+    </data>
+</odoo>

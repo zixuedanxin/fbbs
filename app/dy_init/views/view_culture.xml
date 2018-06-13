@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# ===================================================
+# projectname: FBBFood
+# file_name: menus
+# author: tangdayi
+# data: 2018年01月16日 14时07分
+# ===================================================
+-->
+<odoo>
+    <data>
+        <record id="dy_init_culture_list" model="ir.ui.view">
+            <field name="name">文化箴言列表</field>
+            <field name="model">dy.init.culture</field>
+            <field name="arch" type="xml">
+                <tree string="文化箴言列表">
+                    <field name="key"/>
+                    <field name="category_id"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="dy_init_culture_form" model="ir.ui.view">
+            <field name="name">文化箴言详情</field>
+            <field name="model">dy.init.culture</field>
+            <field name="arch" type="xml">
+                <form string="文化箴言">
+                    <sheet>
+                         <h1>基本信息</h1>
+                        <group>
+                            <field name="key"/>
+                            <field name="category_id"/>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_dy_init_culture_list" model="ir.actions.act_window">
+            <field name="name">文化箴言</field>
+            <field name="res_model">dy.init.culture</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="dy_init_culture_list"/>
+            <field name="help" type="html">
+                <p>
+                    内容文化箴言。
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
